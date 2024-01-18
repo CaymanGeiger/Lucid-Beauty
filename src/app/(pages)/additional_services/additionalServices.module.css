@@ -1,0 +1,67 @@
+.mainDiv {
+    background-color: var(--background-main);
+    padding: 30px;
+    display: grid;
+    justify-content: center;
+
+}
+
+.mainChild {
+    margin-bottom: 20px;
+}
+
+.errorMainDiv {
+    background-color: var(--background-darkmode);
+}
+
+.additionalServiceInfoDiv {
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    box-shadow: 0 0 8px rgb(207, 207, 207);
+    border-left: 2px solid rgb(215, 215, 215);
+    border-bottom: 2px solid rgb(215, 215, 215);
+    border-right: 2px solid rgb(215, 215, 215);
+    background-color: var(--background-darkmode);
+    width: 100%;
+    max-width: 1000px;
+}
+
+.description {
+    min-height: 200px;
+    padding: 15px 0;
+}
+
+.descriptionDiv {
+    border-top: 1px solid rgb(107, 107, 107);
+}
+
+.descriptionTitle{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(107, 107, 107);
+}
+
+.name {
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+.servicePhoto {
+    display: block;
+    width: 100%;
+    min-width: 250px;
+    max-width: 1000px;
+    height: 100%;
+    min-height: 300px;
+    max-height: 600px;
+    object-fit: cover;
+    margin: 0 auto;
+    border: 2px solid rgba(208, 208, 208, 0.71);
+    border-radius: 3px;
+}
+
+.homeTopPhotoDiv {}

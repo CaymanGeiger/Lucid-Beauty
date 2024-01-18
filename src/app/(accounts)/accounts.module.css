@@ -1,0 +1,395 @@
+.signInModel {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    background: rgb(178, 129, 200);
+        background: linear-gradient(0deg, rgba(178, 129, 200, 1) 0%, rgba(136, 94, 152, 1) 100%);
+    z-index: 100;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    transition: transform .4s, opacity 0.3s;
+    opacity: 0;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.signInModel.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    pointer-events: auto;
+}
+
+.formDiv {
+    padding: 15px 10px 15px 10px;
+}
+
+
+.closeButton{
+    position: absolute;
+    color: white;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    top: 10px;
+    right: 13px;
+}
+
+
+.inputsDiv {
+    width: 155px;
+}
+
+.inputs {
+    border: 1px solid rgb(133, 133, 133);
+    border-radius: 3px;
+    width: auto;
+    padding: 4px;
+}
+.inputs::placeholder {
+    padding-left: 3px;
+    text-align: left;
+}
+
+
+.exitAndInputsDiv {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: fit-content
+}
+
+
+.loginButton {
+    padding: 4px;
+    border-radius: 2px;
+    border: 1px solid rgb(101, 101, 101);
+}
+
+.exitButton {
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    color: var(--text-color-darkmode);
+    border-radius: 20%;
+    border: 1px solid rgb(77, 77, 77);
+    margin-bottom: ;
+}
+
+.exitButtonDiv {
+    display: flex;
+    width: fit-content;
+    align-items: flex-start;
+    justify-content: end;
+    right: 0;
+}
+
+
+
+
+
+.main {
+    width: 300px;
+    height: 265px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+    position: relative;
+    display: grid;
+    grid-template-rows: 200px 200px;
+}
+
+#chk {
+    display: none;
+}
+
+.signup {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    background: #eee;
+    border-radius: 60% / 10%;
+    transform: translateY(25px);
+    transition: .8s ease-in-out;
+    padding-top: 7px;
+}
+
+.signupShow {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    background: #e5e5e5;
+    border-radius: 60% / 10%;
+    transition: .8s ease-in-out;
+    transform: translateY(-150px);
+    padding-top: 10px;
+}
+
+.label {
+    color: #fff;
+    font-size: 2.3em;
+    justify-content: center;
+    display: flex;
+    margin: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+
+.signupForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.loginForm {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button {
+    width: 60%;
+    height: 30px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #573b8a;
+    font-size: .7em;
+    font-weight: bold;
+    margin-top: 12px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+.toggleButton {
+    height: 30px;
+    padding: 0;
+    margin: 0;
+}
+.toggleButtonSignup {
+    cursor: pointer;
+    padding-bottom: 7px;
+    font-size: 20px;
+}
+
+.toggleButtonLogin {
+    color: white;
+    padding-bottom: 7px;
+    font-size: 22px;
+}
+.button:hover {
+    background: #6d44b8;
+}
+
+.login {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    transform: translateY(30px);
+}
+.loginShow {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    transform: translateY(30px);
+}
+
+.loginLabel {
+    color: #573b8a;
+    transform: scale(0.6);
+}
+
+.signup .label {
+    color: #573b8a;
+    transform: scale(.6);
+}
+
+
+
+/* INPUT FIELDS */
+
+.input {
+    width: 60%;
+    height: 20px;
+    background: #e0dede;
+    justify-content: center;
+    display: flex;
+    margin: 7px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.inputName {
+    width: 130px;
+    height: 20px;
+    background: #e0dede;
+    justify-content: center;
+    display: flex;
+    margin: 3px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+
+.inputEmail {
+    width: 130px;
+    height: 20px;
+    background: #e0dede;
+    justify-content: center;
+    display: flex;
+    margin: 3px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.inputPassword {
+    width: 130px;
+    height: 20px;
+    background: #e0dede;
+    justify-content: center;
+    display: flex;
+    margin: 3px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.firstAndLastNameDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.emailDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.passwordAndConfirmDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+/* ON HOVER TITLES */
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: rgba(255, 255, 255, 0.45);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border-radius: 6px;
+    padding: 2px 2px;
+    top: 20%;
+    left: 80%;
+    position: absolute;
+    z-index: 1;
+    white-space: nowrap;
+    font-size: 13px;
+
+    /* Tooltip arrow (optional) */
+    .tooltip::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -5px;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.324) transparent transparent transparent;
+    }
+}
+
+.input:hover+.tooltip {
+    visibility: visible;
+}
+
+
+.tooltipSignup {
+    visibility: hidden;
+    background-color: rgba(238, 238, 238, 0.45);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border-radius: 6px;
+    padding: 2px 2px;
+    top: 10%;
+    left: 100%;
+    position: absolute;
+    z-index: 1;
+    white-space: nowrap;
+    font-size: 13px;
+
+    /* Tooltip arrow (optional) */
+    .tooltipSignup::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -5px;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.324) transparent transparent transparent;
+    }
+}
+
+.inputName:hover+.tooltipSignup {
+    visibility: visible;
+}
+
+.inputEmail:hover+.tooltipSignup {
+    visibility: visible;
+}
+
+.inputPassword:hover+.tooltipSignup {
+    visibility: visible;
+}
+
+
+.errorMessage {
+    position: absolute;
+    white-space: nowrap;
+    top: 48px;
+    color: red;
+    font-size: 12px;
+}

@@ -1,0 +1,410 @@
+
+
+.appointmentLink {
+    color: var(--text-color-darkmode);
+    border-bottom: 1px solid black;
+}
+
+
+.appointmentDiv {
+    width: 100vw;
+    height: fit-content;
+    padding: 30px 40px 30px 40px;
+    background-color: var(--background-darkmode-purple);
+    display: flex;
+    justify-content: center;
+}
+
+
+.appointmentDivChild {
+    background-color: var(--background-darkmode);
+    width: calc(350px + (250) * ((100vw - 500px) / (1500 - 520)));
+    min-width: 350px;
+    max-width: 500px;
+    height: fit-content;
+    padding: 5px 10px 15px 10px;
+    display: grid;
+    grid-template-rows: auto auto;
+    row-gap: 40px;
+    border: 2px solid rgb(206, 206, 206);
+    box-shadow: 0 0 5px rgb(224, 224, 224);
+    border-radius: 5px;
+}
+
+
+
+
+/* HEADER */
+.appointmentHeader {
+    text-align: center;
+    width: fit-content;
+    font-size: max(calc(20px + 7 * ((100vw - 320px) / (1600 - 320))), 20px);
+    margin: 20px 20px 35px 20px;
+    color: var(--text-color-darkmode);
+    border-radius: 3px;
+    border-bottom: 2px solid rgb(136, 135, 135);
+}
+
+.appointmentHeaderDiv {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+/* FORM */
+
+/* GRID ONE */
+.appointmentGridOne {
+    height: fit-content;
+
+}
+
+
+@media(min-width: 550px) {
+    .inputDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        height: fit-content;
+    }
+    .inputDivParent {
+    display: grid;
+    grid-template-columns: auto auto;
+    }
+}
+
+@media(max-width: 550px){
+    .inputDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        height: fit-content;
+    }
+}
+
+
+
+/* INPUTS */
+.selectLabel {
+    margin-top: 10px;
+    text-align: left;
+    color: var(--text-color-darkmode);
+}
+
+.input {
+    width: calc(100vw / 6);
+    min-width: 150px;
+    max-width: 200px;
+    padding: 2px;
+    outline-color:none;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 3px;
+    box-shadow: 0 0 6px rgba(241, 241, 241, 0.632)
+}
+
+
+
+.select {
+    text-align: left;
+    width: 200px;
+    height:fit-content;
+    margin-top: 5px;
+    background-color: var(--background-darkmode);
+}
+
+.selectDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.serviceItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    /* Additional styling for each service item */
+}
+
+.deleteServiceButton {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    padding: 0;
+    margin: 0 0 0 10px;
+    color: red;
+}
+
+.submitButtonDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.submitButton {
+    padding: 5px;
+    color: var(--text-color-darkmode);
+    margin-top: 15px;
+    width: 140px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 12px;
+    border: 1px solid rgb(112, 111, 111);
+    box-shadow: 0 0 10px rgb(219, 219, 219);
+    background-color:transparent;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+.submitButton:hover {
+    background-color: rgb(104, 104, 104);
+    color: rgb(218, 218, 218);
+}
+.oneClickApptButton:hover {
+    background-color: rgb(104, 104, 104);
+    color: rgb(218, 218, 218);
+}
+
+.oneClickApptButton {
+    padding: 5px;
+    color: var(--text-color-darkmode);
+    width: 100px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 8px;
+    border: 1px solid rgb(112, 111, 111);
+    box-shadow: 0 0 10px rgb(219, 219, 219);
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* GRID TWO */
+
+@media(min-width: 550px){
+    .appointmentGridTwo {
+        height: fit-content;
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: flex-start;
+        justify-items: center;
+        padding: 0 0 10px 0;
+        margin-top: -5px;
+        width: calc(100% + 20px);
+        height: calc(100% + 20px);;
+        margin-left: -10px;
+        border-top: 2px solid rgb(206, 206, 206);
+        box-shadow: 0 0 5px rgb(224, 224, 224);
+    }
+}
+@media(max-width: 550px) {
+    .appointmentGridTwo {
+        height: fit-content;
+        display: grid;
+        grid-template-rows:auto auto;
+        justify-items: center;
+        align-items: flex-start;
+        padding: 0 0 10px 0;
+        margin-top: -5px;
+        width: calc(100% + 20px);
+        height: calc(100% + 20px);
+        margin-left: -10px;
+        border-top: 2px solid rgb(206, 206, 206);
+        box-shadow: 0 0 5px rgb(224, 224, 224);
+    }
+}
+.appointmentGridTwoChildOne {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
+
+.appointmentGridTwoChildTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
+
+.formLinkHeader {
+    margin: 15px 0 5px 0;
+    font-size: 20px;
+    color: var(--text-color-darkmode);
+    border-bottom: 1px solid black;
+    white-space: nowrap;
+}
+
+.formLinkHeaderAccount {
+    margin: 15px 0 5px 0;
+    font-size: 20px;
+    color: var(--text-color-darkmode);
+    border-bottom: 1px solid black;
+    white-space: nowrap;
+    cursor: pointer;
+
+}
+
+.formLink {
+    color: var(--text-color-darkmode);
+}
+
+.formLink:hover {
+    color: rgb(62, 62, 62);
+    border-bottom: 1px solid rgb(144, 144, 144);
+}
+
+.formChild {
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto;
+    row-gap: 10px;
+    grid-template-columns: auto;
+    justify-items: center;
+}
+
+
+.labels {
+    color: var(--text-color-darkmode);
+}
+
+
+
+
+
+/* WECLOME MESSAGE MODAL */
+
+.welcomeMessageMainDiv {
+    background-color: var(--background-darkmode);
+    padding: 20px;
+    outline: none;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    border: 3px solid rgb(174, 174, 174);
+}
+
+
+/* CHILD ONE */
+
+.welcomeMessageMainChildOne {
+    display: grid;
+    padding: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    row-gap: 6px;
+}
+
+.welcomeMessageMainChildOneHeader {
+    margin-bottom: 6px;
+    color: var(--text-color-darkmode);
+    font-size: 23px;
+}
+
+
+.welcomeMessageMainChildOneButtonsDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.welcomeMessageMainChildOneButtons {
+    cursor: pointer;
+    border: 1px solid rgb(112, 111, 111);
+    box-shadow: 0 0 6px rgb(219, 219, 219);
+    background-color: transparent;
+    border-radius: 20px;
+    color: var(--text-color-darkmode);
+    padding: 5px;
+    width: 180px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.welcomeMessageMainChildOneButtons:hover{
+    background-color: rgb(104, 104, 104);
+        color: rgb(218, 218, 218);
+}
+
+
+
+/* CHILD TWO */
+.welcomeMessageMainChildTwo {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 5px;
+    margin-top: 8px;
+    background-color: var(--background-darkmode);
+    border: 2px solid rgb(156, 156, 156);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.welcomeMessageMainChildTwoText {
+    color: var(--text-color-darkmode);
+}
+
+.welcomeMessageMainChildTwoHeader {
+    color: var(--text-color-darkmode);
+    border-bottom: 2px solid rgb(123, 123, 123);
+    margin-bottom: 4px;
+}
+
+.appointmentGridTwoChildTwoAccount {
+    display: grid;
+    grid-template-columns: auto;
+    row-gap: 0;
+    justify-items: center;
+}
+
+
+.benefitsMainChildTwo {
+    background-color: var(--background-darkmode);
+    border: 2px solid rgb(136, 136, 136);
+    padding: 10px;
+    width: fit-content;
+}
+
+.benefitsMainChildTwoHeaderDiv {
+    display: flex;
+    justify-content: center;
+    padding: 5px 0 6px 0;
+}
+
+.benefitsMainChildTwoHeader {
+    border-bottom: 2px solid var(--text-color-darkmode);;
+    color: var(--text-color-darkmode);
+}
+
+.benefitsMainChildTwoText {
+    text-align: center;
+    white-space: nowrap;
+    margin: 3px;
+    color: var(--text-color-darkmode);
+}
+
+.MuiDialogActions-root>button:first-child {
+    display: none;
+}
+
+.errorMessageSubmit {
+    white-space: nowrap;
+    margin-top: 5px;
+    color: red;
+    font-size: 17px;
+}
+
+
+
+.errorBorder {
+    border-radius: 5px;
+    border: 1px solid rgb(255, 61, 61);
+    box-shadow: 0 0 3px rgb(255, 134, 134);
+}

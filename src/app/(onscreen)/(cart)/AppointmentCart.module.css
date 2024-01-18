@@ -1,0 +1,376 @@
+
+.appointmentCart {
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: transparent;
+}
+
+@keyframes slideUp {
+    from {
+        bottom: -50px;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        bottom: 0;
+        opacity: 1;
+    }
+
+    to {
+        bottom: -50px;
+        opacity: 0;
+    }
+}
+
+@keyframes slideUpFromClose {
+    from {
+        bottom: -50px;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+.onScreenDiv {
+    display: flex;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid #f0a4fa;
+    overflow: hidden;
+    width: fit-content;
+    animation: slideUp 1.5s ease forwards 1.5s;
+    bottom: 0;
+}
+.appointmentCartChild {
+    background-color: var(--background-darkmode);
+    padding: 0;
+    margin: 0 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6vw;
+    min-width: 90px;
+    height: 6vh;
+    min-height: 40px;
+    opacity: 0;
+    position: relative;
+    transition:
+        background-color .6s ease-in-out,
+        box-shadow 0.8s ease-in-out,
+        color 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.appointmentCartChild:hover {
+    background-color: #e7c5eb;
+    box-shadow: 0 0 10px #f5acff;
+    color: #292929;
+    ;
+    padding: 0;
+    margin: 0 0 0 0;
+}
+
+.appointmentCartChild:not(.close) {
+
+}
+
+.onScreenDiv:not(.closeScreens) {
+    position: relative;
+    animation: slideUpFromClose 1.2s ease 0s forwards;
+}
+
+.onScreenDiv:not(.closeScreens) {
+    position: relative;
+    animation: slideUpFromClose 1.2s ease 0s forwards;
+}
+
+.closeScreens {
+    opacity: 0.6;
+    padding: 0;
+    margin: 0 0 0 0;
+    position: relative;
+    transition: opacity 0.5s ease-in-out, background-color 3s ease-in-out;
+    background-color: #e100ff;
+    border: 1px solid #f0a4fa;
+    animation: slideDown 1s ease forwards;
+}
+
+
+
+.appointmentCartOpened {
+    background-color: var(--background-darkmode);
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    height: 0;
+    width: 0;
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid #f0a4fa;
+    margin: 0;
+    transform: translateX(50px) translateY(50px);
+    cursor: pointer;
+}
+
+.open {
+    bottom: 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    padding: 30px 0;
+    margin: 0;
+    opacity: 1;
+    transition: all 1s ease-in-out, opacity 1.7s ease-in-out;
+    transform: translateX(0) translateY(0);
+}
+
+.cartClosed {
+    opacity: .1;
+    transition: all 1s ease-in-out, opacity .7s ease-in-out;
+}
+.chatOpened {
+    background-color: var(--background-darkmode);
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    height: 0;
+    width: 0;
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid #f0a4fa;
+    margin: 0;
+    padding: 0 0 0 0;
+    transition: all 1s ease-in-out;
+    transform: translateX(50px) translateY(50px);
+    cursor: pointer;
+}
+
+
+.chatOpen {
+    bottom: 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    padding: 0 0 0 0;
+    margin: 0;
+    transform: translateX(0) translateY(0);
+}
+
+
+.cartItemsDivParent {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.cartItemsDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.cartItemsDivHeaders {
+    font-size: 20px;
+}
+
+.cartItemsAdditionalServices {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.cartItemsServices {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+.cartHeaderDivOpen {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.cartHeaderDivClose {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.cartHeader {
+    padding: 0 0 10px 0;
+    margin: 0;
+    color: rgb(61, 61, 61);
+    border-bottom: 1px solid #f0a4fa;
+    border-radius: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.chatDivOpen {
+    opacity: 1;
+    transition: all 1.7s ease-in-out;
+    height: 100%;
+}
+
+.chatDivClosed {
+    opacity: .1;
+    height: 100%;
+    transition: all .5s ease-in-out;
+}
+
+.closeForHeader {
+    font-size: 10px;
+    transition: all 1s ease-in-out;
+}
+
+.openForHeader {
+    font-size: 25px;
+    transition: all 1s ease-in-out;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400');
+
+.bg,
+.button {
+    position: absolute;
+    width: 60px;
+    height: 50px;
+    border-radius: 45%;
+    transition: all .4s ease-in-out;
+    top: -25px;
+}
+.bg,
+.button:hover {
+    position: absolute;
+    width: 60px;
+    height: 50px;
+    border-radius: 45%;
+    top: -20px;
+}
+
+.button:hover .icon {
+    transform: scale(1.2);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.bg {
+    animation: pulse 1.7s ease infinite;
+    background-color: #ff4cea;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    z-index: 99;
+    border: none;
+    background: #f0a4fa;
+    background-size: 18px;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+}
+
+.icon {
+    position: relative;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    background: #f0a4fa;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    transition: all .2s ease-in-out;
+}
+
+.fixedIcons {
+    color: var(--text-color-darkmode);
+    width: 20px;
+    height: 20px;
+}
+
+
+.button a {
+    position: absolute;
+    color: #FFF;
+    font-size: 17px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scale(1.05);
+        opacity: 0;
+    }
+}
+
+
+.clearCartButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 99;
+    border: none;
+    background: #f0a4fa;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    width: 100%;
+    height: 25px;
+    border-radius: 10%;
+    bottom: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    transition: all .1s ease-in-out;
+}
+
+.clearCartButton:focus,
+.clearCartButton:active {
+    height: 22px;
+    background: #f0abfa;
+    color: rgb(67, 67, 67);
+    font-size: 13px;
+    padding-top: 3px;
+}

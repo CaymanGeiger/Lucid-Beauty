@@ -1,0 +1,336 @@
+
+.main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px 0;
+    background-color: var(--background-darkmode-purple);
+}
+.mainChild {
+    display: flex;
+    padding: 0 1em 20px 1em;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+    border-radius: 5px;
+    background-color: var(--background-darkmode);
+    height: fit-content;
+    width: 95%;
+}
+.mainChildHeader {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border: 2px solid #00000000;
+    color: var(--text-color-darkmode);
+    font-size: clamp(10px, calc(10px + (40 - 20) * ((100vw - 300px) / (2100 - 100))), 20px);
+    white-space: nowrap;
+}
+
+.loginButtonAppt {
+    padding: 5px;
+    color: var(--text-color-darkmode);
+    margin-top: 20px;
+    width: 120px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 12px;
+    border: 1px solid rgb(112, 111, 111);
+    box-shadow: 0 0 10px rgb(219, 219, 219);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+.loginButtonAppt:hover {
+    background-color: rgb(104, 104, 104);
+    color: rgb(218, 218, 218);
+}
+
+.myAppointmentPhoto {
+    width: calc(100vw / 5.5);
+    min-width: 125px;
+    max-width: 200px;
+    height: 100%;
+}
+
+.myAppointmentDiv {
+    display: grid;
+    box-shadow: 0 0 2px rgb(122, 122, 122);
+    border-radius: 5px;
+    height: fit-content;
+    max-height: 200px;
+    overflow: hidden;
+    width: calc(100vw / 1.1);
+    min-width: 250px;
+    max-width: 900px;
+}
+
+.myAppointmentDivChildOne {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+
+}
+
+.myAppointmentDivChildOneHeader {
+    white-space: nowrap;
+    font-size: clamp(19px, calc(10px + (40 - 20) * ((100vw - 300px) / (1700))), 25px);
+    color: var(--text-color-darkmode);
+}
+
+.myAppointmentDivChildOneHeaderDiv {
+
+}
+
+.myAppointmentButtonDiv {
+
+}
+
+.myAppointmentButton {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    transform: translate(5px, -5px);
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    padding: 2px;
+    margin: 0;
+    font-weight: bold;
+    font-size: 12px;
+    border-bottom: 2px solid rgb(145, 145, 145);
+    box-shadow: 0 0 2px rgb(219, 219, 219);
+    transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap;
+    color: var(--text-color-darkmode);
+}
+
+.myAppointmentButton:hover {
+    background-color: var(--violet-2);
+    padding: 2px;
+}
+
+.additonalClickedDiv {
+    background-color: transparent;
+    box-shadow: 0 0 2px black;
+    width: inherit;
+}
+
+
+.myAppointmentDivOne {
+    display: flex;
+    height: calc(100px + (100px) * ((100vw - 200px) / (1700 - 300)));
+}
+
+.loginHeader {
+    color: var(--text-color-darkmode);
+}
+
+
+
+
+
+@media (min-width: 600px) {
+.deleteMessage {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+}
+
+@media (max-width: 600px) {
+.deleteMessage {
+        position: absolute;
+        bottom: 30px;
+        left: 5px;
+    }
+}
+
+
+/* RADIX CSS */
+.PopoverClose {
+    font-family: inherit;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--violet-11);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.PopoverClose:hover {
+    background-color: var(--violet-4);
+}
+
+
+
+.PopoverDiv {
+    width: 100%;
+}
+
+.PopoverContent {
+    border-radius: 4px;
+    padding: 20px;
+    width: calc(100vw / 1.7);
+    max-width: 500px;
+    min-width: 150px;
+    background-color: white;
+    box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+    animation-duration: 600ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.PopoverContent:focus {
+    box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px,
+        0 0 0 2px var(--violet-7);
+}
+
+.PopoverContent[data-state='open'][data-side='top'] {
+    animation-name: slideDownAndFade;
+}
+
+.PopoverContent[data-state='open'][data-side='right'] {
+    animation-name: slideLeftAndFade;
+}
+
+.PopoverContent[data-state='open'][data-side='bottom'] {
+    animation-name: slideUpAndFade;
+}
+
+.PopoverContent[data-state='open'][data-side='left'] {
+    animation-name: slideRightAndFade;
+}
+
+.PopoverArrow {
+    fill: white;
+}
+
+@keyframes slideUpAndFade {
+    from {
+        opacity: 0;
+        transform: translateY(2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideRightAndFade {
+    from {
+        opacity: 0;
+        transform: translateX(-2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideDownAndFade {
+    from {
+        opacity: 0;
+        transform: translateY(-2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeftAndFade {
+    from {
+        opacity: 0;
+        transform: translateX(2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ADDITIONAL APPOINTMENTS TABLE */
+
+.totalPrice {
+    padding: 0;
+    margin: 0 0 0 0;
+    font-size: clamp(12px, calc(2px + (40 - 20) * ((100vw - 300px) / (1700))), 16px);
+    color: var(--text-color-darkmode);
+}
+.totalPrice strong {
+    font-size: clamp(12px, calc(2px + (40 - 20) * ((100vw - 300px) / (1700))), 14px);
+    font-weight: 600;
+    color: var(--text-color-lightblack-darkmode);
+}
+
+.date {
+    font-size: clamp(12px, calc(2px + (40 - 20) * ((100vw - 300px) / (1700))), 14px);
+    color: var(--text-color-lightblack-darkmode);
+}
+
+.time {
+    font-size: clamp(13px, calc(2px + (40 - 20) * ((100vw - 300px) / (1700))), 14px);
+    color: var(--text-color-lightblack-darkmode);
+}
+
+.additonalServicesTable {
+
+}
+
+.tableTh {
+    margin-right: 15px;
+}
+
+
+.tableText {
+    text-align: left;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+}
+
+
+.Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 0 6px;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 500;
+    height: 25px;
+}
+
+.Button.red {
+    background-color: var(--red-4);
+    color: var(--red-11);
+}
+
+.Button.red:hover {
+    background-color: var(--red-5);
+}
+
+.Button.red:focus {
+    box-shadow: 0 0 0 2px var(--red-7);
+}

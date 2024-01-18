@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/app/*"],
+      "@reuse_appointment/*": ["./src/app/(pages)/appointment/(reusable_appt)/*"],
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/(extras)/(loading)/LoadingContext.tsx", "src/app/(onscreen)/(chatbox)/(chatbot)/config.js", "src/app/(onscreen)/(chatbox)/ChatBox.jsx", "src/app/(onscreen)/(chatbox)/(chatbot)/CustomBotAvatar.jsx", "src/app/(onscreen)/(chatbox)/(chatbot)/(components)/CustomHeader.jsx"],
+  "exclude": ["node_modules"]
+}

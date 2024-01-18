@@ -1,0 +1,164 @@
+.mainDiv {
+    background-color: var(--background-main);
+    padding: 30px;
+    display: grid;
+    justify-content: center;
+
+}
+
+.mainChild {
+    margin-bottom: 20px;
+    border: 2px solid rgb(234, 234, 234);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.errorMainDiv {
+    background-color: var(--background-darkmode);
+}
+
+.serviceInfoDiv {
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-shadow: 0 0 8px rgb(207, 207, 207);
+    width: 100%;
+    max-width: 1000px;
+    background-color: var(--background-darkmode);
+}
+
+
+.appointmentLink {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.description {
+    min-height: 200px;
+    padding: 15px 0;
+    font-size: 17px;
+    color: var(--text-color-darkmode);
+}
+
+.descriptionDiv {
+    border-top: 1px solid rgb(107, 107, 107);
+}
+
+.descriptionTitle{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid rgb(107, 107, 107);
+    color: var(--text-color-darkmode);
+}
+
+.name {
+    padding: 10px 0;
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--text-color-darkmode);
+}
+
+
+.servicePhoto {
+    display: block;
+    width: 100%;
+    min-width: 250px;
+    max-width: 1000px;
+    height: 100%;
+    min-height: 300px;
+    max-height: 600px;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.homeTopPhotoDiv {
+
+}
+
+
+.button {
+    --offset: 6px;
+    --border-size: 1px;
+    display: block;
+    position: relative;
+    padding: .5em 1em;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--text-color-darkmode);
+    text-transform: uppercase;
+    letter-spacing: .25em;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 var(--border-size) rgb(110, 110, 110);
+    transition-property: background-color;
+    transition-duration: 0.6s;
+    transition-timing-function: ease;
+    transition: .3s;
+}
+
+.button:hover {
+    background-color:#ede8ee;
+    color: rgb(95, 71, 98);
+    border-radius: 10px;
+}
+
+.button__horizontal,
+.button__vertical {
+    position: absolute;
+    top: var(--horizontal-offset, 0);
+    right: var(--vertical-offset, 0);
+    bottom: var(--horizontal-offset, 0);
+    left: var(--vertical-offset, 0);
+    transition: transform .8s ease;
+    will-change: transform;
+}
+
+.button__horizontal,
+.button__vertical::before {
+    content: '';
+    position: absolute;
+    border: inherit;
+}
+
+
+.button__horizontal {
+    --vertical-offset: calc(var(--offset) * -1);
+    border-top: var(--border-size) solid rgb(110, 110, 110);
+    border-bottom: var(--border-size) solid rgb(110, 110, 110);
+}
+
+.button__horizontal::before {
+    top: calc(var(--vertical-offset) - var(--border-size));
+    bottom: calc(var(--vertical-offset) - var(--border-size));
+    left: calc(var(--vertical-offset));
+    right: calc(var(--vertical-offset) * -1);
+}
+
+
+.button:hover .button__horizontal {
+    transform: scaleX(0);
+}
+
+.button__vertical {
+    --horizontal-offset: calc(var(--offset) * -1);
+    border-left: calc(var(--border-size) + 1px) solid rgb(110, 110, 110);
+    border-right: calc(var(--border-size) + 1px)solid rgb(110, 110, 110);
+}
+
+.button__vertical::before {
+    top: calc(var(--horizontal-offset) * -1);
+    bottom: calc(var(--horizontal-offset) * -1);
+    left: calc(var(--horizontal-offset) - var(--border-size));
+    right: calc(var(--horizontal-offset) - var(--border-size));
+}
+
+
+.button:hover .button__vertical {
+    transform: scaleY(0);
+}

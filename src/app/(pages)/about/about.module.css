@@ -1,0 +1,130 @@
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-main);
+    padding: 30px;
+}
+
+.mainChild {
+    position: relative;
+    width: auto;
+}
+
+
+.homeTopPhoto {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.homeTopPhotoDiv {}
+
+.underPhotoTitleDiv {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-left: 1px solid rgb(140, 140, 140);
+    border-right: 1px solid rgb(140, 140, 140);
+    background-color: rgb(240, 239, 239);
+}
+
+.underPhotoTitle {
+    border-bottom: 1px solid black;
+    color: var(--text-color-light);
+    font-weight: lighter;
+}
+
+
+.aboutUsDescriptionDiv {
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: 0 0 5px rgba(186, 186, 186, 0.742);
+    border: 1px solid rgba(140, 140, 140, 0.785);
+    background-color: rgb(240, 239, 239);
+    padding: 15px;
+}
+
+.aboutUsDescription {
+    color: rgb(45, 45, 45);
+    font-weight: lighter;
+}
+
+.centeredLastLineHeader {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 23px;
+    color: rgba(34, 34, 34, 0.842);
+}
+
+
+@media (max-width: 320px) {
+    .servicesMainDivParent {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+
+    }
+
+    .servicesMainDivChild {
+        background-color: rgb(145, 145, 145);
+        max-height: 500px;
+        max-width: 400px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .servicesMainDivParent {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: white;
+        padding: 15px 20px;
+    }
+
+    .servicesMainDivChild {
+        background-color: rgb(240, 239, 239);
+        max-height: 500px;
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .shoeCartAndCheckoutInfoDiv {}
+}
+
+
+.styleEight {
+    overflow: visible;
+    /* For IE */
+    padding: 0;
+    margin-top: 45px;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+
+.styleEight:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background-color: rgb(240, 239, 239);
+}

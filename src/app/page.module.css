@@ -1,0 +1,222 @@
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--background-darkmode-purple);
+  padding: 30px 30px 30px 30px;
+}
+
+.mainChild {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: max-content max-content;
+  justify-items: center;
+  row-gap: 60px;
+  background-color: var(--background-darkmode);
+  padding: 30px;
+  border-radius: 3px;
+}
+
+@media (max-width: 700px) {
+  .mainChild {
+      position: relative;
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: max-content max-content;
+      justify-items: center;
+      row-gap: 60px;
+      background-color: var(--background-darkmode);
+      padding: 0px;
+      border-radius: 3px;
+    }
+    .main {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      background-color: var(--background-darkmode);
+      padding: 30px 0;
+    }
+}
+
+.mainChildSmall {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: max-content max-content;
+  justify-items: center;
+  row-gap: 60px;
+  background-color: var(--background-darkmode);
+  padding: 30px;
+  border: 2px solid rgba(219, 219, 219, 0.327);
+  border-radius: 3px;
+}
+.mainChildDivOne {
+  display: grid;
+  grid-template-columns: auto auto;
+  height: fit-content;
+  width: fit-content;
+}
+
+.mainChildDivTwo {
+    display: grid;
+    grid-template-columns: auto auto;
+    height: fit-content;
+    width: fit-content;
+}
+
+
+.homeTopPhoto {
+  display: block;
+  width: calc(100vw / 3);
+  min-width: 300px;
+  max-width: 1000px;
+  height: calc(100vw / 3);
+  min-height: 300px;
+  max-height: 1000px;
+  object-fit: cover;
+  margin: 0;
+  border: 2px solid rgba(209, 209, 209, 0.59);
+  border-radius: 3px;
+}
+
+.homeTopPhotoDiv {
+  height: fit-content;
+  width: fit-content;
+}
+
+.underPhotoTitleDiv{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: calc(100vw / 3) fit-content;
+  min-width: 300px;
+  max-width: 1000px;
+  height: calc(100vw / 3);
+  background-color: var(--background-darkmode);
+}
+
+.underPhotoTitleDivChildOne {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.underPhotoTitleDivChildTwo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: wrap;
+}
+
+.underPhotoTitle{
+  text-align: center;
+  color: var(--text-color-darkmode);
+  font-weight: lighter;
+  font-size: min(40px, calc(20px + (60 - 40) * ((100vw - 600px) / (1300 - 320))));
+}
+
+.underPhotoTitleOne {
+  text-align: center;
+  color: var(--text-color-darkmode);
+  font-weight: lighter;
+  font-size: min(40px, calc(20px + (60 - 40) * ((100vw - 600px) / (1300 - 320))));
+}
+
+.aboutUsDescriptionDiv{
+    width: 100%;
+    max-width: 1000px;
+    background-color: var(--background-darkmode);
+    padding: 15px;
+}
+
+.aboutUsDescription {
+    color: var(--text-color-darkmode);
+    font-weight: lighter;
+}
+
+.centeredLastLineHeader {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 23px;
+  color: var(--text-color-darkmode);
+}
+
+
+@media (max-width: 320px) {
+  .servicesMainDivParent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-darkmode);
+
+  }
+
+  .servicesMainDivChild {
+    background-color: var(--background-darkmode);
+    max-height: 500px;
+    max-width: 400px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesMainDivParent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--background-darkmode);
+    padding: 15px 20px;
+  }
+
+  .servicesMainDivChild {
+    background-color: var(--background-darkmode);
+    max-height: 500px;
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .shoeCartAndCheckoutInfoDiv {}
+}
+
+
+.styleEight {
+  overflow: visible;
+  /* For IE */
+  padding: 0;
+  margin-top: 20px;
+  border: none;
+  border-top: medium double var(--text-color-darkmode);
+  color: var(--text-color-darkmode);
+  text-align: center;
+}
+
+.styleEight:after {
+  content: "§";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+  background-color: transparent;
+}
+
+.underPhotoPersonTitle {
+  text-align: center;
+  color: var(--text-color-darkmode);
+  font-weight: 600;
+  font-size: min(40px, calc(15px + (60 - 40) * ((100vw - 600px) / (2000 - 320))));
+}
