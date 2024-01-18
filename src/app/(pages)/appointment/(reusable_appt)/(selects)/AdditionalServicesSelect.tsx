@@ -27,27 +27,27 @@ const AdditionalServicesSelect: React.FC<AdditionalServiceSelectProps> = ({ onAd
         label: "None",
     };
 
-    const fetchServices = async () => {
-        const response = await fetch('http://localhost:8080/api/additionalservices/');
-        if (response.ok) {
-            const data = await response.json();
-            const formattedServices = data.map((service: AdditionalService) => ({
-                value: service,
-                label: service.name,
-            }));
-            setServices([noneOption, ...formattedServices]);
-            if (serviceType === "additional_service") {
-                const selectedService = formattedServices.find((service: any) => service.value.id === serviceId);
-                if (selectedService) {
-                    setSelectedOption([selectedService]);
+
+    useEffect(() => {
+        const fetchServices = async () => {
+            const response = await fetch('http://localhost:8080/api/additionalservices/');
+            if (response.ok) {
+                const data = await response.json();
+                const formattedServices = data.map((service: AdditionalService) => ({
+                    value: service,
+                    label: service.name,
+                }));
+                setServices([noneOption, ...formattedServices]);
+                if (serviceType === "additional_service") {
+                    const selectedService = formattedServices.find((service: any) => service.value.id === serviceId);
+                    if (selectedService) {
+                        setSelectedOption([selectedService]);
+                    }
                 }
             }
         }
-    }
-
-    useEffect(() => {
         fetchServices()
-    }, [fetchServices])
+    }, [])
 
 
 

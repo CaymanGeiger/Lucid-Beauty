@@ -29,47 +29,46 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
-    async function verifyToken() {
-        const response = await fetch('http://localhost:8080/api/token/verify/', {
-            method: 'GET',
-            credentials: "include",
-        });
-        if (response.ok) {
-            console.log("token is valid");
-            return;
-        } if (response.status <= 500 && isLoggedIn) {
-            logout();
-        } if (!response.ok && isLoggedIn) {
-            const refreshToken = Cookies.get('refresh_token');
-            if (refreshToken) {
-                const refreshResponse = await fetch('http://localhost:8080/api/token/refresh/', {
-                    method: 'POST',
-                    credentials: "include",
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ refresh: refreshToken }),
-                });
-                if (refreshResponse.ok) {
-                    const data = await refreshResponse.json();
-                    Cookies.set('access_token', data.access);
-                    return;
-                }
-                logout();
-            }
-        }
-    }
-
-
     useEffect(() => {
         const userIdFromCookie = Cookies.get('user_id');
         if (userIdFromCookie) {
             setIsLoggedIn(true);
         }
+
+        async function verifyToken() {
+            const response = await fetch('http://localhost:8080/api/token/verify/', {
+                method: 'GET',
+                credentials: "include",
+            });
+            if (response.ok) {
+                console.log("token is valid");
+                return;
+            } if (response.status <= 500 && isLoggedIn) {
+                logout();
+            } if (!response.ok && isLoggedIn) {
+                const refreshToken = Cookies.get('refresh_token');
+                if (refreshToken) {
+                    const refreshResponse = await fetch('http://localhost:8080/api/token/refresh/', {
+                        method: 'POST',
+                        credentials: "include",
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ refresh: refreshToken }),
+                    });
+                    if (refreshResponse.ok) {
+                        const data = await refreshResponse.json();
+                        Cookies.set('access_token', data.access);
+                        return;
+                    }
+                    logout();
+                }
+            }
+        }
         if (isLoggedIn) {
             verifyToken();
         }
-    }, [isLoggedIn, verifyToken])
+    }, [isLoggedIn])
 
     const login = (userId?: number, userFirstName?: string) => {
         setIsLoggedIn(true);

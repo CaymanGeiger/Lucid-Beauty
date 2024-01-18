@@ -22,28 +22,29 @@ const ServiceSelect: React.FC<OnServiceChangeProps> = ({ onServiceChange, servic
     const [selectedOption, setSelectedOption] = useState<any>(null);
 
 
-    const fetchServices = async () => {
-        const response = await fetch('http://localhost:8080/api/services/');
-        if (response.ok) {
-            const data = await response.json();
-            const formattedServices = data.map((service: Service) => ({
-                value: service,
-                label: service.name,
-                price: service.price
-            }));
-            setService(formattedServices);
-            if (serviceType === "service") {
-                const selectedService = formattedServices.find((service: any) => service.value.id === serviceId);
-                if (selectedService) {
-                    setSelectedOption(selectedService);
+
+
+    useEffect(() => {
+        const fetchServices = async () => {
+            const response = await fetch('http://localhost:8080/api/services/');
+            if (response.ok) {
+                const data = await response.json();
+                const formattedServices = data.map((service: Service) => ({
+                    value: service,
+                    label: service.name,
+                    price: service.price
+                }));
+                setService(formattedServices);
+                if (serviceType === "service") {
+                    const selectedService = formattedServices.find((service: any) => service.value.id === serviceId);
+                    if (selectedService) {
+                        setSelectedOption(selectedService);
+                    }
                 }
             }
         }
-    }
-
-    useEffect(() => {
         fetchServices()
-    }, [fetchServices])
+    }, [])
 
 
     if (selectedOption) {
