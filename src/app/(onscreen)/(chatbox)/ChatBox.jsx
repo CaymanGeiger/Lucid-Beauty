@@ -5,7 +5,7 @@ import ActionProvider from './(chatbot)/ActionProvider';
 import config from './(chatbot)/config';
 import "./radixscroll.css";
 import * as ScrollArea from '@radix-ui/react-scroll-area';
-import "./chatbox.css"
+import "./chatbox1.css"
 
 const ChatBox = () => {
 

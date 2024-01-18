@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect, Suspense } from 'react';
-import styles from './myappointments.module.css';
+import styles from './myappointments1.module.css';
 import Cookies from 'js-cookie';
 import { useModal } from '@/(accounts)/loginmodal';
 import dayjs from 'dayjs';

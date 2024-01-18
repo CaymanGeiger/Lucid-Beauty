@@ -2,7 +2,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faCartShopping, faComment } from '@fortawesome/free-solid-svg-icons';
-import styles from './appointmentcart.module.css';
+import styles from './appointment.module.css';
 const ChatBox = React.lazy(() => import('../(chatbox)/ChatBox'));
 
 const AppointmentCart: React.FC = () => {
