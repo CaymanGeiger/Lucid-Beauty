@@ -48,8 +48,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             Cookies.remove('user_id');
             Cookies.remove('refresh_token');
             Cookies.remove('access_token');
-            Cookies.remove('csrftoken');
-            Cookies.remove('sessionid');
             setIsLoggedIn(false);
         }
     };
@@ -118,7 +116,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
     }, [isLoggedIn, verifyToken])
 
-    
+
     const login = (userId?: number, userFirstName?: string) => {
         setIsLoggedIn(true);
 

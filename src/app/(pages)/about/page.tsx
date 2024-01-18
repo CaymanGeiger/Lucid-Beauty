@@ -11,6 +11,8 @@ const Home: React.FC = () => {
                         className={styles.homeTopPhoto}
                         src="https://www.aman.com/sites/default/files/styles/full_size_large/public/2021-03/Amanjena_Wellness_1.jpg?itok=PvRNMSVU"
                         alt='about page photo'
+                        width={300}
+                        height={300}
                         />
                     </div>
                 </div>

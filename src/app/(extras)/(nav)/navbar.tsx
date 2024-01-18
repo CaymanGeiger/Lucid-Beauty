@@ -87,7 +87,13 @@ export default function Navbar() {
             </div>
             <div className={styles.logo}>
                 <Link href="/" className={styles.linkHome} >
-                    <Image className={styles.logoImg} src={darkModeLogo} alt="nav bar logo" />
+                    <Image
+                    className={styles.logoImg}
+                    src={darkModeLogo}
+                    alt="nav bar logo"
+                    width={210}
+                    height={75}
+                    />
                 </Link></div>
             <div
                 onClick={toggleMenu}

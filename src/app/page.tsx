@@ -12,7 +12,13 @@ export default function Home() {
         <div className={styles.mainChild}>
           <div className={width > 700 ? styles.mainChildDivOne : styles.mainChildDivOneSmall}>
             <div className={styles.homeTopPhotoDiv}>
-              <Image className={styles.homeTopPhoto} src="homePagePhoto2.jpg" alt='home page photo 2' />
+              <Image
+              className={styles.homeTopPhoto}
+              src="homePagePhoto2.jpg"
+              alt='home page photo 2'
+              width={300}
+              height={300}
+              />
             </div>
             <div>
               <div
@@ -31,7 +37,13 @@ export default function Home() {
           <div className={width > 700 ? styles.mainChildDivTwo : styles.mainChildDivTwoSmall}>
             {width < 700 && (
               <div className={styles.homeTopPhotoDiv}>
-                <Image className={styles.homeTopPhoto} src="homePagePhoto3.jpg" alt='home page photo 3' />
+                <Image
+                className={styles.homeTopPhoto}
+                src="homePagePhoto3.jpg"
+                alt='home page photo 3'
+                width={300}
+                height={300}
+                />
               </div>
             )}
             <div>
@@ -56,7 +68,13 @@ export default function Home() {
             </div>
             {width > 700 && (
               <div className={styles.homeTopPhotoDiv}>
-                <Image className={styles.homeTopPhoto} src="homePagePhoto3.jpg" alt='home page photo 4'/>
+                <Image
+                className={styles.homeTopPhoto}
+                src="homePagePhoto3.jpg"
+                alt='home page photo 4'
+                width={300}
+                height={300}
+                />
               </div>
             )}
           </div>
@@ -64,6 +82,6 @@ export default function Home() {
       </main>
     )
   } else {
-    <Image src="hannahSpinner.svg" alt='spinner'/>
+    // <Image src="hannahSpinner.svg" alt='spinner'/>
   }
 }

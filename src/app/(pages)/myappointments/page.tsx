@@ -121,6 +121,8 @@ const MyAppointments: React.FC = () => {
                                         className={styles.myAppointmentPhoto}
                                         src={`http://localhost:8080${appointment.service.image}`}
                                         alt='additonal service image'
+                                        width={125}
+                                        height={125}
                                     />
                                 </div>
                                 <div className={styles.myAppointmentDivChildOne}>

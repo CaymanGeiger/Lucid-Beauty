@@ -7,7 +7,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model AgeRequirement {
@@ -73,9 +74,9 @@ model Account {
   id             Int           @id @default(autoincrement())
   firstName      String        @db.VarChar(30)
   lastName       String        @db.VarChar(30)
+  password       String        @db.VarChar(30)
   email          String        @unique @db.VarChar(255)
   dateJoined     DateTime      @default(now())
-  isActive       Boolean       @default(true)
   isStaff        Boolean       @default(false)
   userLevel      UserLevel     @default(basic)
   profilePicture String        @default("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREPvmzUnSZWU_AQX3YpiUS5kpMldREZhYKMQ&usqp=CAU") @db.VarChar(255)

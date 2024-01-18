@@ -31,7 +31,13 @@ export default function ServicesPage() {
                     <>
                         <div className={styles.mainChild} key={service.id}>
                             <div className={styles.homeTopPhotoDiv} >
-                                <Image className={styles.servicePhoto} src={`http://localhost:8080${service.image}`} alt="service image"/>
+                                <Image
+                                className={styles.servicePhoto}
+                                src={`http://localhost:8080${service.image}`}
+                                alt="service image"
+                                width={250}
+                                height={300}
+                                />
                             </div>
                             <div className={styles.serviceInfoDiv}>
                                 <p className={styles.name}>{service.name}</p>
