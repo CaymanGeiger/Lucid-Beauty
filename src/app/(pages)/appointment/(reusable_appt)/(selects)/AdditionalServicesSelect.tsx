@@ -36,6 +36,7 @@ const AdditionalServicesSelect: React.FC<AdditionalServiceSelectProps> = ({ onAd
                 const formattedServices = data.map((service: AdditionalService) => ({
                     value: service,
                     label: service.name,
+                    price: service.price
                 }));
                 setServices([noneOption, ...formattedServices]);
                 if (serviceType === "additional_service") {
@@ -47,7 +48,7 @@ const AdditionalServicesSelect: React.FC<AdditionalServiceSelectProps> = ({ onAd
             }
         }
         fetchServices()
-    }, [])
+    }, [serviceId, serviceType])
 
 
 

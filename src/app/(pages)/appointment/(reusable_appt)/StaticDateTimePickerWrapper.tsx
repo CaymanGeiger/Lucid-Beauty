@@ -20,7 +20,7 @@
         throw new Error('Failed to fetch services');
       }
       const data = await res.json();
-      const formattedData = data.map(appointment => ({
+      const formattedData = data.map((appointment:any) => ({
         date: appointment.appointment_date,
         time: appointment.appointment_time
       }));
@@ -33,19 +33,19 @@
 
 
 
-    const handleDateChange = (newValue) => {
+    const handleDateChange = (newValue:any) => {
       setSelectedDate(newValue);
     };
 
-    const shouldDisableDate = (date) => {
-      return bookedAppointments.some(appointment => {
+    const shouldDisableDate = (date:any) => {
+      return bookedAppointments.some((appointment:any) => {
         const appointmentDate = dayjs(appointment.date);
         return date.isSame(appointmentDate, 'day');
       });
     };
 
 
-    const shouldDisableTime = (time, clockType) => {
+    const shouldDisableTime = (time: any, clockType:any) => {
       if (clockType === 'hours') {
         // Define working hours in 24-hour format
         const startHour = 8; // 8 AM
