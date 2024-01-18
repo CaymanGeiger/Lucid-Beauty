@@ -8,7 +8,7 @@ import * as Popover from '@radix-ui/react-popover';
 import 'dayjs/locale/en';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useAuth } from '../../(auth)/authcontext';
-
+import Image from 'next/image';
 
 const DeleteMessage = React.lazy(() => import('./DeleteAppointment'));
 dayjs.extend(customParseFormat);
@@ -100,7 +100,7 @@ const MyAppointments: React.FC = () => {
             <div className={styles.mainChild}>
                 <div className={styles.mainChildHeader}>
                     <h1>
-                        {userFirstName}'s Appointments
+                        {userFirstName}&apos;s Appointments
                     </h1>
                 </div>
                 {myAppointments.map((appointment: any, index: string) => {
@@ -117,7 +117,7 @@ const MyAppointments: React.FC = () => {
                         >
                             <div className={styles.myAppointmentDivOne}>
                                 <div>
-                                    <img
+                                    <Image
                                         className={styles.myAppointmentPhoto}
                                         src={`http://localhost:8080${appointment.service.image}`}
                                         alt='additonal service image'

@@ -69,7 +69,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (isLoggedIn) {
             verifyToken();
         }
-    }, [])
+    }, [isLoggedIn, verifyToken])
 
     const login = (userId?: number, userFirstName?: string) => {
         setIsLoggedIn(true);

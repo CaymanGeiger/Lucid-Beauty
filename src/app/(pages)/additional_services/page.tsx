@@ -5,7 +5,7 @@ import styles2 from '../../page.module.css'
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useLoading } from '@/(extras)/(loading)/LoadingContext';
-
+import Image from 'next/image';
 
 export default function ServicesPage() {
     const [additionalServicesData, setAdditionalServicesData] = useState<any>([]);
@@ -31,7 +31,7 @@ export default function ServicesPage() {
                     <>
                         <div className={styles.mainChild} key={service.id}>
                             <div className={styles.homeTopPhotoDiv} >
-                                <img className={styles.servicePhoto} src={`http://localhost:8080${service.image}`} alt="service image"/>
+                                <Image className={styles.servicePhoto} src={`http://localhost:8080${service.image}`} alt="service image"/>
                             </div>
                             <div className={styles.serviceInfoDiv}>
                                 <p className={styles.name}>{service.name}</p>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles2 from '@/page.module.css'
 import AppointmentButton from "./AppointmentButton";
 import React, { useEffect, useState } from "react";
-
+import Image from 'next/image';
 
 const ServicesPage: React.FC = () => {
     const [servicesData, setServicesData] = useState([]);
@@ -31,7 +31,7 @@ const ServicesPage: React.FC = () => {
                     <div key={service.id}>
                     <div className={styles.mainChild}>
                         <div className={styles.homeTopPhotoDiv} >
-                            <img className={styles.servicePhoto} src={`http://localhost:8080${service.image}`} alt='service image'/>
+                            <Image className={styles.servicePhoto} src={`http://localhost:8080${service.image}`} alt='service image'/>
                         </div>
                         <div className={styles.serviceInfoDiv}>
                             <p className={styles.name}>{service.name}</p>

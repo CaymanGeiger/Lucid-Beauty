@@ -43,7 +43,7 @@ const ServiceSelect: React.FC<OnServiceChangeProps> = ({ onServiceChange, servic
 
     useEffect(() => {
         fetchServices()
-    }, [])
+    }, [fetchServices])
 
 
     if (selectedOption) {

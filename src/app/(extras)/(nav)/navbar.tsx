@@ -11,7 +11,7 @@ import { useModal } from '../../(accounts)/loginmodal';
 import { useDarkModeContext } from '../(darkmode)/useDarkModeContext';
 import { useLoading } from '../(loading)/LoadingContext';
 import Cookies from 'js-cookie';
-
+import Image from 'next/image';
 
 
 export default function Navbar() {
@@ -85,7 +85,10 @@ export default function Navbar() {
                     <h4 style={{ width: "100%", fontSize: "12px" }}>Loading..</h4>
                 )}
             </div>
-            <div className={styles.logo}><Link href="/" className={styles.linkHome} ><img className={styles.logoImg} src={darkModeLogo} alt="nav bar logo" /></Link></div>
+            <div className={styles.logo}>
+                <Link href="/" className={styles.linkHome} >
+                    <Image className={styles.logoImg} src={darkModeLogo} alt="nav bar logo" />
+                </Link></div>
             <div
                 onClick={toggleMenu}
                 className={`${styles["nav-icon3"]} ${navOpened ? styles.open : ''}`}

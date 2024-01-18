@@ -1,6 +1,7 @@
 "use client"
 import styles from './page.module.css'
 import useWindowSize from './(extras)/(functions)/WindowSize';
+import Image from 'next/image';
 
 export default function Home() {
   const { width } = useWindowSize()
@@ -11,7 +12,7 @@ export default function Home() {
         <div className={styles.mainChild}>
           <div className={width > 700 ? styles.mainChildDivOne : styles.mainChildDivOneSmall}>
             <div className={styles.homeTopPhotoDiv}>
-              <img className={styles.homeTopPhoto} src="homePagePhoto2.jpg" alt='home page photo 2' />
+              <Image className={styles.homeTopPhoto} src="homePagePhoto2.jpg" alt='home page photo 2' />
             </div>
             <div>
               <div
@@ -30,7 +31,7 @@ export default function Home() {
           <div className={width > 700 ? styles.mainChildDivTwo : styles.mainChildDivTwoSmall}>
             {width < 700 && (
               <div className={styles.homeTopPhotoDiv}>
-                <img className={styles.homeTopPhoto} src="homePagePhoto3.jpg" alt='home page photo 3' />
+                <Image className={styles.homeTopPhoto} src="homePagePhoto3.jpg" alt='home page photo 3' />
               </div>
             )}
             <div>
@@ -45,17 +46,17 @@ export default function Home() {
                 <div
                   className={styles.underPhotoTitleDivChildTwo}
                 >
-                  <h1 className={styles.underPhotoTitle}>"I&nbsp;</h1>
+                  <h1 className={styles.underPhotoTitle}>&quot;I&nbsp;</h1>
                   <h1 className={styles.underPhotoTitle}>Have&nbsp;</h1>
                   <h1 className={styles.underPhotoTitle}>Never&nbsp;</h1>
                   <h1 className={styles.underPhotoTitle}>Felt&nbsp;</h1>
-                  <h1 className={styles.underPhotoTitle}>Better"</h1>
+                  <h1 className={styles.underPhotoTitle}>Better&quot;</h1>
                 </div>
               </div>
             </div>
             {width > 700 && (
               <div className={styles.homeTopPhotoDiv}>
-                <img className={styles.homeTopPhoto} src="homePagePhoto3.jpg" alt='home page photo 4'/>
+                <Image className={styles.homeTopPhoto} src="homePagePhoto3.jpg" alt='home page photo 4'/>
               </div>
             )}
           </div>
@@ -63,6 +64,6 @@ export default function Home() {
       </main>
     )
   } else {
-    <img src="hannahSpinner.svg" alt='spinner'/>
+    <Image src="hannahSpinner.svg" alt='spinner'/>
   }
 }
