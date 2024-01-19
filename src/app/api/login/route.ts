@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 
 
-const ACCESS_TOKEN_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET || 'your-secret-key';
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET || 'refresh-secret-key';
 
 export async function POST(request: NextRequest) {
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
         return response;
 
     } catch (error) {
-        return new NextResponse(JSON.stringify({ error: error.message }), {
+        return new NextResponse(JSON.stringify({ error: error }), {
             status: 500,
             headers: {
                 'Content-Type': 'application/json',

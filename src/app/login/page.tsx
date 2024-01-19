@@ -12,18 +12,16 @@ const Login: React.FC = () => {
         event.preventDefault();
 
         try {
-            const response = await fetch('/api/login', { // Adjust the API endpoint as needed
+            const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ email, password }),
             });
-
             const data = await response.json();
             if (response.ok) {
                 setLoginResponse(`Login successful: ${JSON.stringify(data)}`);
-                // Here, you would handle the received tokens (store them securely)
             } else {
                 setLoginResponse(`Login failed: ${data.error || 'Unknown error'}`);
             }
@@ -35,7 +33,7 @@ const Login: React.FC = () => {
 
     const logout = async () => {
         try {
-            const response = await fetch('/api/logout', { // Adjust the API endpoint as needed
+            const response = await fetch('/api/logout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,7 +42,6 @@ const Login: React.FC = () => {
 
             if (response.ok) {
                 setLoginResponse(`Logout successful`);
-                // Here, you would remove the stored tokens
             } else {
                 setLoginResponse(`Logout failed`);
             }

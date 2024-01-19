@@ -14,7 +14,7 @@ export default function Home() {
             <div className={styles.homeTopPhotoDiv}>
               <Image
               className={styles.homeTopPhoto}
-              src="homePagePhoto2.jpg"
+              src="/homePagePhoto2.jpg"
               alt='home page photo 2'
               width={300}
               height={300}
@@ -39,7 +39,7 @@ export default function Home() {
               <div className={styles.homeTopPhotoDiv}>
                 <Image
                 className={styles.homeTopPhoto}
-                src="homePagePhoto3.jpg"
+                src="/homePagePhoto3.jpg"
                 alt='home page photo 3'
                 width={300}
                 height={300}
@@ -70,7 +70,7 @@ export default function Home() {
               <div className={styles.homeTopPhotoDiv}>
                 <Image
                 className={styles.homeTopPhoto}
-                src="homePagePhoto3.jpg"
+                src="/homePagePhoto3.jpg"
                 alt='home page photo 4'
                 width={300}
                 height={300}

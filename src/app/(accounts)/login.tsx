@@ -34,18 +34,13 @@ const LoginPage: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
 
         const email = emailLogin
         const password = passwordLogin
-        const data = {
-            email,
-            password
-        }
         try {
-            const response = await fetch('http://localhost:8080/api/account/login/', {
+            const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data),
-                credentials: 'include',
+                body: JSON.stringify({ email, password }),
             });
             const responseData = await response.json();
             const firstName = responseData.first_name
@@ -55,8 +50,6 @@ const LoginPage: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
             console.log('Login successful:', response);
         } catch (error) {
             console.error('Login error:', error);
-        } finally {
-            // window.location.reload();
         }
     };
 

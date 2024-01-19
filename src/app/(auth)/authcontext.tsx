@@ -30,14 +30,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 
 
-
     const logout = async () => {
         try {
-            await fetch('http://localhost:8080/api/account/logout/', {
+            const response = await fetch('/api/logout', {
                 method: 'POST',
-                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             });
-
+            setIsLoggedIn(false);
             setIsLoggedIn(false);
             Cookies.remove('user_first_name');
             Cookies.remove('user_id');
@@ -50,58 +51,115 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             Cookies.remove('access_token');
             setIsLoggedIn(false);
         }
-    };
+    }
 
 
-
-    const verifyToken = useCallback(() => {
-        return new Promise<void>(async (resolve, reject) => {
-            try {
-                const response = await fetch('http://localhost:8080/api/token/verify/', {
-                    method: 'GET',
-                    credentials: "include",
-                });
-
-                if (response.ok) {
-                    console.log("token is valid");
-                    resolve();
-                    return;
-                }
-
-                if (response.status <= 500 && isLoggedIn) {
-                    logout();
-                    reject(new Error("Logout due to server error"));
-                    return;
-                }
-
-                if (!response.ok && isLoggedIn) {
-                    const refreshToken = Cookies.get('refresh_token');
-                    if (refreshToken) {
-                        const refreshResponse = await fetch('http://localhost:8080/api/token/refresh/', {
-                            method: 'POST',
-                            credentials: "include",
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ refresh: refreshToken }),
-                        });
-
-                        if (refreshResponse.ok) {
-                            const data = await refreshResponse.json();
-                            Cookies.set('access_token', data.access);
-                            resolve();
-                            return;
+        const verifyToken = useCallback(() => {
+            return new Promise<void>(async (resolve, reject) => {
+                try {
+                    const response = await fetch('/api/verifyToken', {
+                        method: 'POST', // Changed from GET to POST
+                        credentials: 'include', // To include cookies
+                        headers: {
+                            'Content-Type': 'application/json'
                         }
-                        logout();
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        setIsLoggedIn(true);
+                        console.log("token is valid");
+                        resolve();
+                        return;
+                    } else {
+                        // Token is not valid\
+                        logout()
+                        console.error('Token verification failed', data.message);
                     }
+
+                    // if (response.status <= 500 && isLoggedIn) {
+                    //     logout();
+                    //     reject(new Error("Logout due to server error"));
+                    //     return;
+                    // }
+
+                    // if (!response.ok && isLoggedIn) {
+                    //     const refreshToken = Cookies.get('refresh_token');
+                    //     if (refreshToken) {
+                    //         const refreshResponse = await fetch('http://localhost:8080/api/token/refresh/', {
+                    //             method: 'POST',
+                    //             credentials: "include",
+                    //             headers: {
+                    //                 'Content-Type': 'application/json',
+                    //             },
+                    //             body: JSON.stringify({ refresh: refreshToken }),
+                    //         });
+
+                    //         if (refreshResponse.ok) {
+                    //             const data = await refreshResponse.json();
+                    //             Cookies.set('access_token', data.access);
+                    //             resolve();
+                    //             return;
+                    //         }
+                    //         logout();
+                    //     }
+                    // }
+                    // reject(new Error("Invalid response"));
+                } catch (error) {
+                    console.error(error);
+                    reject(error);
                 }
-                reject(new Error("Invalid response"));
-            } catch (error) {
-                console.error(error);
-                reject(error);
-            }
-        });
-    }, [isLoggedIn, logout, Cookies]);
+            });
+        }, [isLoggedIn, logout]);
+
+    // const verifyToken = useCallback(() => {
+    //     return new Promise<void>(async (resolve, reject) => {
+    //         try {
+    //             const response = await fetch('http://localhost:8080/api/token/verify/', {
+    //                 method: 'GET',
+    //                 credentials: "include",
+    //             });
+
+    //             if (response.ok) {
+    //                 console.log("token is valid");
+    //                 resolve();
+    //                 return;
+    //             }
+
+    //             if (response.status <= 500 && isLoggedIn) {
+    //                 logout();
+    //                 reject(new Error("Logout due to server error"));
+    //                 return;
+    //             }
+
+    //             if (!response.ok && isLoggedIn) {
+    //                 const refreshToken = Cookies.get('refresh_token');
+    //                 if (refreshToken) {
+    //                     const refreshResponse = await fetch('http://localhost:8080/api/token/refresh/', {
+    //                         method: 'POST',
+    //                         credentials: "include",
+    //                         headers: {
+    //                             'Content-Type': 'application/json',
+    //                         },
+    //                         body: JSON.stringify({ refresh: refreshToken }),
+    //                     });
+
+    //                     if (refreshResponse.ok) {
+    //                         const data = await refreshResponse.json();
+    //                         Cookies.set('access_token', data.access);
+    //                         resolve();
+    //                         return;
+    //                     }
+    //                     logout();
+    //                 }
+    //             }
+    //             reject(new Error("Invalid response"));
+    //         } catch (error) {
+    //             console.error(error);
+    //             reject(error);
+    //         }
+    //     });
+    // }, [isLoggedIn, logout, Cookies]);
 
 
 
@@ -127,6 +185,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             Cookies.set('user_first_name', userFirstName);
         }
     };
+
 
 
 
