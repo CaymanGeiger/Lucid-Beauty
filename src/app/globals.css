@@ -90,11 +90,11 @@ a {
 :root::-webkit-scrollbar-thumb {
   border-radius: 8px;
   border: 1px solid rgb(189, 189, 189);
-  background-color: #ddcadf;
+  background-color: #bc9bc0;
 }
 
 :root::-webkit-scrollbar-thumb:hover {
   border-radius: 8px;
   border: 1px solid rgb(189, 189, 189);
-  background-color: #c5a7c8;
+  background-color: #a786aa;
 }
