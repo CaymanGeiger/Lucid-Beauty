@@ -23,7 +23,6 @@ const ServicesPage: React.FC = () => {
         fetchData();
     }, []);
 
-
     return (
         <div className={styles.mainDiv}>
             {servicesData.map((service: any) => {
