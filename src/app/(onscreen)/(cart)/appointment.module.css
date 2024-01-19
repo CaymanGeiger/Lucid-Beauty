@@ -59,7 +59,7 @@
     bottom: 0;
 }
 .appointmentCartChild {
-    background-color: var(--background-darkmode);
+    background-color: var(--background-darkmode-purple);
     padding: 0;
     margin: 0 0 0 0;
     display: flex;
@@ -72,17 +72,16 @@
     opacity: 0;
     position: relative;
     transition:
-        background-color .6s ease-in-out,
+        background-color .3s ease-in-out,
         box-shadow 0.8s ease-in-out,
         color 0.5s ease-in-out;
     opacity: 1;
 }
 
 .appointmentCartChild:hover {
-    background-color: #e7c5eb;
-    box-shadow: 0 0 10px #f5acff;
+    background-color: #8b698e;
+    box-shadow: 0 0 10px #5a445c;
     color: #292929;
-    ;
     padding: 0;
     margin: 0 0 0 0;
 }

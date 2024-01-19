@@ -23,7 +23,7 @@ export default function Home() {
             <div>
               <div
                 style={width < 700 ?
-                  { flexDirection: "column", maxHeight: "100px", minHeight: "200px" }
+                  { flexDirection: "column", maxHeight: "100px", minHeight: "100px" }
                   : { maxHeight: "1000px", minHeight: "300px" }}
                 className={styles.underPhotoTitleDiv}
               >
@@ -50,7 +50,7 @@ export default function Home() {
               <div
                 className={styles.underPhotoTitleDiv}
                 style={width < 700 ?
-                  { flexDirection: "column", maxHeight: "150px", minHeight: "200px" }
+                  { flexDirection: "column", maxHeight: "150px", minHeight: "100px" }
                   : { flexDirection: "column", maxHeight: "1000px", minHeight: "300px" }}>
                 <div className={styles.underPhotoTitleDivChildOne}>
                   <h1 className={styles.underPhotoPersonTitle}>-Amelia Anderson</h1>

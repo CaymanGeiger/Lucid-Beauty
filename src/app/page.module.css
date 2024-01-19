@@ -21,28 +21,6 @@
   border-radius: 3px;
 }
 
-@media (max-width: 700px) {
-  .mainChild {
-      position: relative;
-      width: 100%;
-      display: grid;
-      grid-template-columns: auto;
-      grid-template-rows: max-content max-content;
-      justify-items: center;
-      row-gap: 60px;
-      background-color: var(--background-darkmode);
-      padding: 0px;
-      border-radius: 3px;
-    }
-    .main {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      background-color: var(--background-darkmode);
-      padding: 30px 0;
-    }
-}
 
 .mainChildSmall {
   position: relative;
@@ -91,16 +69,6 @@
   width: fit-content;
 }
 
-.underPhotoTitleDiv{
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  width: calc(100vw / 3) fit-content;
-  min-width: 300px;
-  max-width: 1000px;
-  height: calc(100vw / 3);
-  background-color: var(--background-darkmode);
-}
 
 .underPhotoTitleDivChildOne {
   width: 100%;
@@ -112,7 +80,7 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     white-space: wrap;
 }
@@ -151,6 +119,15 @@
   color: var(--text-color-darkmode);
 }
 
+.underPhotoTitleDiv {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: calc(100vw / 3) fit-content;
+  max-width: 1000px;
+  height: calc(100vw / 5);
+  background-color: var(--background-darkmode);
+}
 
 @media (max-width: 320px) {
   .servicesMainDivParent {
@@ -159,7 +136,6 @@
     display: flex;
     justify-content: center;
     background-color: var(--background-darkmode);
-
   }
 
   .servicesMainDivChild {
@@ -170,7 +146,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and (min-width: 321px) {
   .servicesMainDivParent {
     width: 100%;
     height: 100%;
@@ -187,10 +163,33 @@
     width: 100%;
     padding: 20px;
   }
+  .mainChild {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: max-content max-content;
+    justify-items: center;
+    row-gap: 60px;
+    background-color: var(--background-darkmode);
+    padding: 0px;
+    border-radius: 3px;
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-darkmode);
+    padding: 30px 0;
+  }
 }
 
-@media (max-width: 1200px) {
-  .shoeCartAndCheckoutInfoDiv {}
+
+
+@media (min-width: 768px) {
+
 }
 
 

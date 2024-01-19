@@ -139,19 +139,17 @@ a {
   width: 12px;
 }
 :root::-webkit-scrollbar-track {
-  border-radius: 8px;
-  background-color: var(--background-darkmode);
-  border: 1px solid rgb(231, 231, 231);
+  background-color: var(--background-darkmode-purple);
 }
 
 :root::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  border: 1px solid rgb(189, 189, 189);
-  background-color: #bc9bc0;
+  border-radius: 3px;
+  border: 1px solid rgba(189, 189, 189, 0.413);
+  background-color: #796b7a;
 }
 
 :root::-webkit-scrollbar-thumb:hover {
-  border-radius: 8px;
+  border-radius: 3px;
   border: 1px solid rgb(189, 189, 189);
-  background-color: #a786aa;
+  background-color: #5a445c;
 }
