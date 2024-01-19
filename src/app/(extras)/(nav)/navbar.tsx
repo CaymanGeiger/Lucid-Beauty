@@ -23,6 +23,8 @@ export default function Navbar() {
     const { openModal } = useModal();
     const [menuDisplay, setMenuDisplay] = useState<number>(0)
     const [menuDisplayIndex, setMenuDisplayIndex] = useState<number>(-1)
+    const [menuDisplayVisability, setMenuDisplayVisability] = useState<any>("hidden")
+
     const [authChecked, setAuthChecked] = useState(false);
     const [navOpened, setNavOpened] = useState(false)
     const { isDarkMode, toggleDarkMode } = useDarkModeContext();
@@ -33,6 +35,7 @@ export default function Navbar() {
         setMenuDisplay(1);
         setMenuDisplayIndex(100000);
         setNavOpened(!navOpened);
+
     };
 
     const closeMenu = () => {
@@ -45,10 +48,12 @@ export default function Navbar() {
             // Menu is currently closed, so open it
             setMenuDisplay(1);
             setMenuDisplayIndex(100000);
+            setMenuDisplayVisability("visible")
         } else {
             // Menu is currently open, so close it
             setMenuDisplay(0);
             setMenuDisplayIndex(-1);
+            setMenuDisplayVisability("hidden")
         }
 
         // Toggle the navOpened state
@@ -108,7 +113,7 @@ export default function Navbar() {
                 <span></span>
                 <span></span>
             </div>
-            <ul className={styles.mainMenu} style={{ opacity: menuDisplay, zIndex: menuDisplayIndex }}>
+            <ul className={styles.mainMenu} style={{ opacity: menuDisplay, zIndex: menuDisplayIndex, visibility: menuDisplayVisability }}>
                 <li>
                     <button onClick={toggleDarkMode} className={styles.darkModebutton}>
                         {isDarkMode ? 'Light Mode' : 'Dark Mode'}
@@ -129,10 +134,6 @@ export default function Navbar() {
                 <li className={styles.li}>
                     <Link href="/about" onClick={closeMenu} className={styles.link}>About</Link>
                 </li>
-                {/* <span className={styles.icons}>
-
-
-                </span> */}
                 <ul className={styles.wrapper}>
                     <li className={`${styles.icon} ${styles.facebook}`}>
                         <span className={styles.tooltip}>Facebook</span>

@@ -54,7 +54,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const verifyToken = useCallback(() => {
             return new Promise<void>(async (resolve, reject) => {
                 try {
-                    const response = await fetch('/api/verifyToken', {
+                    const response = await fetch('/api/verifytoken', {
                         method: 'POST',
                         credentials: 'include',
                         headers: {

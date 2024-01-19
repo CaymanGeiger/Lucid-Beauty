@@ -10,16 +10,21 @@
 }
 
 .nav {
-    background-color: var(--background-darkmode);
+    background-color: var(--background-darkmode-purple);
     color: var(--text-color-darkmode);
     display: flex;
     justify-content: space-between;
     padding-top: 5px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .nav .mainMenu {
     display: flex;
     list-style: none;
+    z-index: -1;
 }
 
 .nav .mainMenu .li .link {
