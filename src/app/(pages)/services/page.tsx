@@ -33,7 +33,7 @@ const ServicesPage: React.FC = () => {
                         <div className={styles.homeTopPhotoDiv} >
                             <Image
                             className={styles.servicePhoto}
-                            src={`http://localhost:8080${service.image}`}
+                            src={service.image}
                             alt='service image'
                             width={250}
                             height={300}
