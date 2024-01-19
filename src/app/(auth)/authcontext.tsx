@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 
 interface AuthContextType {
-    login: (userId?: number, userFirstName?: string) => void;
+    login: (userId?: number, firstName?: string) => void;
     logout: () => void;
     isLoggedIn?: boolean;
 }
@@ -39,16 +39,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 },
             });
             setIsLoggedIn(false);
-            setIsLoggedIn(false);
-            Cookies.remove('user_first_name');
-            Cookies.remove('user_id');
+            Cookies.remove('firstName');
+            Cookies.remove('userId');
             router.push("/");
         } catch (error) {
             console.error('Logout error:', error);
-            Cookies.remove('user_first_name');
-            Cookies.remove('user_id');
-            Cookies.remove('refresh_token');
-            Cookies.remove('access_token');
+            Cookies.remove('firstName');
+            Cookies.remove('userId');
             setIsLoggedIn(false);
         }
     }
@@ -58,8 +55,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             return new Promise<void>(async (resolve, reject) => {
                 try {
                     const response = await fetch('/api/verifyToken', {
-                        method: 'POST', // Changed from GET to POST
-                        credentials: 'include', // To include cookies
+                        method: 'POST',
+                        credentials: 'include',
                         headers: {
                             'Content-Type': 'application/json'
                         }
@@ -72,100 +69,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                         resolve();
                         return;
                     } else {
-                        // Token is not valid\
                         logout()
                         console.error('Token verification failed', data.message);
                     }
-
-                    // if (response.status <= 500 && isLoggedIn) {
-                    //     logout();
-                    //     reject(new Error("Logout due to server error"));
-                    //     return;
-                    // }
-
-                    // if (!response.ok && isLoggedIn) {
-                    //     const refreshToken = Cookies.get('refresh_token');
-                    //     if (refreshToken) {
-                    //         const refreshResponse = await fetch('http://localhost:8080/api/token/refresh/', {
-                    //             method: 'POST',
-                    //             credentials: "include",
-                    //             headers: {
-                    //                 'Content-Type': 'application/json',
-                    //             },
-                    //             body: JSON.stringify({ refresh: refreshToken }),
-                    //         });
-
-                    //         if (refreshResponse.ok) {
-                    //             const data = await refreshResponse.json();
-                    //             Cookies.set('access_token', data.access);
-                    //             resolve();
-                    //             return;
-                    //         }
-                    //         logout();
-                    //     }
-                    // }
-                    // reject(new Error("Invalid response"));
                 } catch (error) {
+                    logout();
                     console.error(error);
                     reject(error);
                 }
             });
         }, [isLoggedIn, logout]);
 
-    // const verifyToken = useCallback(() => {
-    //     return new Promise<void>(async (resolve, reject) => {
-    //         try {
-    //             const response = await fetch('http://localhost:8080/api/token/verify/', {
-    //                 method: 'GET',
-    //                 credentials: "include",
-    //             });
-
-    //             if (response.ok) {
-    //                 console.log("token is valid");
-    //                 resolve();
-    //                 return;
-    //             }
-
-    //             if (response.status <= 500 && isLoggedIn) {
-    //                 logout();
-    //                 reject(new Error("Logout due to server error"));
-    //                 return;
-    //             }
-
-    //             if (!response.ok && isLoggedIn) {
-    //                 const refreshToken = Cookies.get('refresh_token');
-    //                 if (refreshToken) {
-    //                     const refreshResponse = await fetch('http://localhost:8080/api/token/refresh/', {
-    //                         method: 'POST',
-    //                         credentials: "include",
-    //                         headers: {
-    //                             'Content-Type': 'application/json',
-    //                         },
-    //                         body: JSON.stringify({ refresh: refreshToken }),
-    //                     });
-
-    //                     if (refreshResponse.ok) {
-    //                         const data = await refreshResponse.json();
-    //                         Cookies.set('access_token', data.access);
-    //                         resolve();
-    //                         return;
-    //                     }
-    //                     logout();
-    //                 }
-    //             }
-    //             reject(new Error("Invalid response"));
-    //         } catch (error) {
-    //             console.error(error);
-    //             reject(error);
-    //         }
-    //     });
-    // }, [isLoggedIn, logout, Cookies]);
-
-
-
 
     useEffect(() => {
-        const userIdFromCookie = Cookies.get('user_id');
+        const userIdFromCookie = Cookies.get('userId');
         if (userIdFromCookie) {
             setIsLoggedIn(true);
         }
@@ -175,14 +92,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }, [isLoggedIn, verifyToken])
 
 
-    const login = (userId?: number, userFirstName?: string) => {
+    const login = (userId?: number, firstName?: string) => {
         setIsLoggedIn(true);
 
         if (userId) {
-            Cookies.set('user_id', userId.toString());
+            Cookies.set('userId', userId.toString());
         }
-        if (userFirstName) {
-            Cookies.set('user_first_name', userFirstName);
+        if (firstName) {
+            Cookies.set('firstName', firstName);
         }
     };
 

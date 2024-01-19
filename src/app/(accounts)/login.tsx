@@ -43,8 +43,8 @@ const LoginPage: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
                 body: JSON.stringify({ email, password }),
             });
             const responseData = await response.json();
-            const firstName = responseData.first_name
-            const userId = responseData.account_id
+            const firstName = responseData.firstName
+            const userId = responseData.userId
             login(userId, firstName);
             closeModal();
             console.log('Login successful:', response);
@@ -55,31 +55,30 @@ const LoginPage: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
 
     const handleSignup = async (event: React.FormEvent) => {
         event.preventDefault();
-        const first_name = firstNameSignup
-        const last_name = lastNameSignup
+        const firstName = firstNameSignup
+        const lastName = lastNameSignup
         const email = emailSignup
         const password = passwordSignup
         const passwordConfirmation = passwordConfirmationSignup
         const data = {
-            first_name,
-            last_name,
+            firstName,
+            lastName,
             email,
             password,
             passwordConfirmation
         }
         if (password === passwordConfirmation) {
             try {
-                const response = await fetch('http://localhost:8080/api/accounts/', {
+                const response = await fetch('/api/signup', {
                     method: 'POST',
-                    credentials: "include",
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data),
                 });
                 const responseData = await response.json();
-                const userId = responseData.account_id
-                const firstName = responseData.first_name
+                const userId = responseData.userId
+                const firstName = responseData.firstName
                 login(userId, firstName);
                 closeModal();
                 triggerToast(`Welcome, ${firstName}`, "success")

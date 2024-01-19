@@ -4,14 +4,14 @@
     margin: 15px 0;
 }
 
-/* Target the message */
+
 .react-chatbot-kit-user-chat-message {
     order: 2;
     background-color: rgba(173, 216, 230, 0.485);
-    /* This will make the message appear second */
+    color: var(--text-color-darkmode);
 }
 
-/* Target the user's name */
+
 .react-chatbot-kit-user-message-name {
     order: 1;
     background-color: rgba(126, 179, 197, 0.523);
@@ -20,4 +20,31 @@
 .react-chatbot-kit-chat-message-container {
     box-sizing: border-box;
     padding-bottom: 40px;
+}
+
+.headerTitleDiv {
+    border-bottom: 1px solid #78457f;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    white-space: nowrap;
+    padding-top: 28px;
+    background-color: var(--background-darkmode);
+}
+
+.headerTitle {
+    width: fit-content;
+    height: 100%;
+    color: var(--text-color-darkmode);
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--text-color-darkmode);
+    white-space: nowrap;
+}
+
+.avatarMeTitle {
+    margin: 0;
+    color: var(--text-color-darkmode);
+    font-size: 16px;
+    font-weight: 500;
 }

@@ -90,18 +90,18 @@ const AppointmentCart: React.FC = () => {
                         </div>
                         <div className={styles.cartItemsServices}>
                             <div>
-                                <h5>
+                                <h5 className={styles.cartItems}>
                                     Nails
                                 </h5>
-                                <h5>
+                                <h5 className={styles.cartItems}>
                                     Lashes
                                 </h5>
                             </div>
                             <div>
-                                <h5>
+                                <h5 className={styles.cartItems}>
                                     $64
                                 </h5>
-                                <h5>
+                                <h5 className={styles.cartItems}>
                                     $30
                                 </h5>
                             </div>
@@ -115,12 +115,12 @@ const AppointmentCart: React.FC = () => {
                         </div>
                         <div className={styles.cartItemsAdditionalServices}>
                             <div>
-                                <h5>
+                                <h5 className={styles.cartItems}>
                                     Warm Towel
                                 </h5>
                             </div>
                             <div>
-                                <h5>
+                                <h5 className={styles.cartItems}>
                                     $12
                                 </h5>
                             </div>

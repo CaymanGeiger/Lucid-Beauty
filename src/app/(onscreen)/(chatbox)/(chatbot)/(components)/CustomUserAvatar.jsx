@@ -13,12 +13,7 @@ const CustomUserAvatar = () => {
             alignItems: 'flex-start',
             marginBottom: '0'
         }}>
-            <h4 style={{
-                margin: 0,
-                color: 'black',
-                fontSize: "16px",
-                fontWeight: '500'
-            }}>
+            <h4 className='avatarMeTitle'>
                 &#128587; Me:
             </h4>
         </div>

@@ -1,3 +1,4 @@
 .botavatardiv {
-    background-color: #d4a6db68
+    background-color: #d4a6db68;
+    color: var(--text-color-darkmode);
 }

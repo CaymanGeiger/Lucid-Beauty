@@ -1,7 +1,7 @@
 // config.ts
 "use client"
 import { createChatBotMessage } from 'react-chatbot-kit';
-import CustomBotAvatar from './CustomBotAvatar'; // Adjust the path as necessary
+import CustomBotAvatar from './CustomBotAvatar';
 import CustomHeader from './(components)/CustomHeader';
 import CustomUserAvatar from './(components)/CustomUserAvatar';
 

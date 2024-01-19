@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { NextRequest, NextResponse } from 'next/server';
-
+import prisma from '../../../../lib/prisma';
+import bcrypt from 'bcrypt';
 
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET || 'your-secret-key';
@@ -8,28 +9,54 @@ const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET || 'refresh-secret
 
 export async function POST(request: NextRequest) {
     try {
-        // Parse the request body to get credentials
         const reqBody = await request.json();
         const { email, password } = reqBody;
 
-        // Validate credentials
-        // ...
 
-        // If valid, create access and refresh tokens
+        const user = await prisma.account.findUnique({
+            where: {
+                email: email
+            }
+        });
+        const userId = user?.id;
+        const firstName = user?.firstName;
+
+        if (!user) {
+            return new NextResponse(JSON.stringify({ error: 'Invalid email credentials' }), {
+                status: 401,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+        }
+
+        const isValidPassword = await bcrypt.compare(password, user.password);
+        if (!isValidPassword) {
+            return new NextResponse(JSON.stringify({ error: 'Invalid password credentials' }), {
+                status: 401,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+        }
+
         const accessToken = jwt.sign(
             { userEmail: email },
             ACCESS_TOKEN_SECRET,
-            { expiresIn: '15m' } // short expiry for access token
+            { expiresIn: '15m' }
         );
 
         const refreshToken = jwt.sign(
             { userEmail: email },
             REFRESH_TOKEN_SECRET,
-            { expiresIn: '7d' } // longer expiry for refresh token
+            { expiresIn: '1d' }
         );
 
-        // Return both tokens in the response
-        const response = new NextResponse(JSON.stringify({ message: "Tokens set in cookies" }), {
+        const response = new NextResponse(JSON.stringify({
+            message: "User authenticated successfully",
+            userId: userId,
+            firstName: firstName
+        }), {
             status: 200,
             headers: {
                 'Content-Type': 'application/json'

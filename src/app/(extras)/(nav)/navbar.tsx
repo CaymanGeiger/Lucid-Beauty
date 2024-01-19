@@ -12,6 +12,7 @@ import { useDarkModeContext } from '../(darkmode)/useDarkModeContext';
 import { useLoading } from '../(loading)/LoadingContext';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 
 export default function Navbar() {
@@ -26,6 +27,7 @@ export default function Navbar() {
     const [navOpened, setNavOpened] = useState(false)
     const { isDarkMode, toggleDarkMode } = useDarkModeContext();
     const darkModeLogo = isDarkMode ? '/lucidbeautywhite.png' : '/lucidbeautyblack.png';
+    const router = useRouter();
 
     const openMenu = () => {
         setMenuDisplay(1);
@@ -85,16 +87,18 @@ export default function Navbar() {
                     <h4 style={{ width: "100%", fontSize: "12px" }}>Loading..</h4>
                 )}
             </div>
-            <div className={styles.logo}>
-                <Link href="/" className={styles.linkHome} >
-                    <Image
-                    className={styles.logoImg}
-                    src={darkModeLogo}
-                    alt="nav bar logo"
-                    width={210}
-                    height={75}
-                    />
-                </Link></div>
+                <div className={styles.logo}>
+                    <div className={styles.linkHome} >
+                        <Image
+                        className={styles.logoImg}
+                        src={darkModeLogo}
+                        alt="nav bar logo"
+                        width={210}
+                        height={75}
+                        onClick={() => router.push("/")}
+                        />
+                    </div>
+                </div>
             <div
                 onClick={toggleMenu}
                 className={`${styles["nav-icon3"]} ${navOpened ? styles.open : ''}`}

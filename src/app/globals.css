@@ -37,6 +37,9 @@
   }
 }
 
+span {
+  color: var(--text-color-darkmode);
+}
 button {
   all: unset;
   text-align: center;
