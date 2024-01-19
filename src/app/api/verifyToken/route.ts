@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
-import { promisify } from 'util';
 
-const verifyJwt = promisify(jwt.verify);
+
+function verifyJwt(token: string, secret: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+        jwt.verify(token, secret, (err, decodedToken) => {
+            if (err) reject(err);
+            else resolve(decodedToken);
+        });
+    });
+}
 
 export async function POST(request: NextRequest) {
     try {
