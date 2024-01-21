@@ -22,13 +22,14 @@ const AdditionalServicesSelect: React.FC<AdditionalServiceSelectProps> = ({ onAd
     const [services, setServices] = useState<AdditionalService[]>([]);
     const [selectedOption, setSelectedOption] = useState<any[]>([]);
 
-    const noneOption = {
-        value: 0,
-        label: "None",
-    };
 
 
     useEffect(() => {
+        const noneOption = {
+            value: 0,
+            label: "None",
+        };
+
         const fetchServices = async () => {
             const response = await fetch('http://localhost:8080/api/additionalservices/');
             if (response.ok) {
@@ -48,7 +49,7 @@ const AdditionalServicesSelect: React.FC<AdditionalServiceSelectProps> = ({ onAd
             }
         }
         fetchServices()
-    }, [noneOption, serviceId, serviceType])
+    }, [serviceId, serviceType])
 
 
 
