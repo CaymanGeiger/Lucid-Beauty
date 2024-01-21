@@ -26,6 +26,7 @@ model Service {
   name             String          @db.VarChar(50)
   description      String          @db.VarChar(500)
   price            Decimal         @db.Decimal(10, 2)
+  deposit          Decimal         @db.Decimal(10, 2)
   minDuration      Int
   maxDuration      Int
   category         String          @db.VarChar(50)
@@ -42,6 +43,7 @@ model AdditionalService {
   name             String          @db.VarChar(50)
   description      String          @db.VarChar(500)
   price            Decimal         @db.Decimal(10, 2)
+  deposit          Decimal         @db.Decimal(10, 2)
   minDuration      Int
   maxDuration      Int
   category         String          @db.VarChar(50)

@@ -5,7 +5,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['localhost', 'www.micropigmentation.academy'],
+        domains: ['localhost', 'www.micropigmentation.academy',
+        'static4.depositphotos.com','img.freepik.com',
+        'images.pexels.com'],
     },
 };
 

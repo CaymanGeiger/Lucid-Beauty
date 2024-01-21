@@ -1,5 +1,5 @@
 "use client"
-import GetAdditionalServicesData from "./getAdditionalServices"
+import { AdditionalServicesData } from "./getAdditionalServices"
 import styles from "../services/services.module.css"
 import styles2 from '../../page.module.css'
 import Link from "next/link";
@@ -15,7 +15,7 @@ export default function ServicesPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await GetAdditionalServicesData();
+                const data = await AdditionalServicesData();
                 setAdditionalServicesData(data);
             } catch (error) {
                 console.error("Error fetching services:", error);
@@ -33,7 +33,7 @@ export default function ServicesPage() {
                             <div className={styles.homeTopPhotoDiv} >
                                 <Image
                                 className={styles.servicePhoto}
-                                src={`http://localhost:8080${service.image}`}
+                                src={service.image}
                                 alt="service image"
                                 width={250}
                                 height={300}

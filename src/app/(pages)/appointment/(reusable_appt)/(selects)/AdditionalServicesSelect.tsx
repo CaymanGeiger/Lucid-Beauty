@@ -48,7 +48,7 @@ const AdditionalServicesSelect: React.FC<AdditionalServiceSelectProps> = ({ onAd
             }
         }
         fetchServices()
-    }, [serviceId, serviceType])
+    }, [noneOption, serviceId, serviceType])
 
 
 

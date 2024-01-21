@@ -1,8 +1,9 @@
 "use server"
-export default async function GetAdditionalServicesData() {
-    const res = await fetch('http://back-end-api:8000/api/additionalservices/');
+
+export async function AdditionalServicesData() {
+    const res = await fetch(`${process.env.WEBSITE_URL}/api/additionalservices`);
     if (!res.ok) {
-        throw new Error('Failed to fetch services');
+        throw new Error(`HTTP error! Status: ${res.status}`);
     }
     return res.json();
 }

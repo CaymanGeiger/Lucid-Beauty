@@ -78,7 +78,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                     reject(error);
                 }
             });
-        }, [isLoggedIn, logout]);
+        }, [setIsLoggedIn, logout]);
 
 
     useEffect(() => {
