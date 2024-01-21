@@ -7,7 +7,7 @@ const nextConfig = {
     images: {
         domains: ['localhost', 'www.micropigmentation.academy',
         'static4.depositphotos.com','img.freepik.com',
-        'images.pexels.com'],
+            'images.pexels.com', 'st2.depositphotos.com'],
     },
 };
 

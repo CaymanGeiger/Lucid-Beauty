@@ -3,7 +3,20 @@
     padding: 30px;
     display: grid;
     justify-content: center;
+}
 
+@media (max-width: 1000px) {
+    .mainDiv {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (min-width: 1000px) {
+    .mainDiv {
+        grid-template-columns: 1fr 1fr;
+        padding: 30px 40px;
+    }
 }
 
 .mainChild {
@@ -70,7 +83,7 @@
     height: 100%;
     min-height: 300px;
     max-height: 600px;
-    object-fit: scale-down;
+    object-fit: cover;
     margin: 0 auto;
 }
 

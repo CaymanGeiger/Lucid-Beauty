@@ -10,6 +10,7 @@ import Image from 'next/image';
 const ServicesPage: React.FC = () => {
     const [servicesData, setServicesData] = useState([]);
 
+
     useEffect(() => {
         const fetchData = async () => {
             try {
