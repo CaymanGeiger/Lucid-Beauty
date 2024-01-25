@@ -21,7 +21,7 @@ interface AdditionalServiceSelectProps {
 const AdditionalServicesSelect: React.FC<AdditionalServiceSelectProps> = ({ onAdditionalServiceChange, serviceId, serviceType }) => {
     const [services, setServices] = useState<AdditionalService[]>([]);
     const [selectedOption, setSelectedOption] = useState<any[]>([]);
-    const url = process.env.WEBSITE_URL ? process.env.WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
+    const url = process.env.NEXT_PUBLIC_WEBSITE_URL ? process.env.NEXT_PUBLIC_WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 
 

@@ -20,7 +20,7 @@ interface OnServiceChangeProps {
 const ServiceSelect: React.FC<OnServiceChangeProps> = ({ onServiceChange, serviceId, serviceType, isMissing }) => {
     const [service, setService] = useState<Service[]>([]);
     const [selectedOption, setSelectedOption] = useState<any>(null);
-    const url = process.env.WEBSITE_URL ? process.env.WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
+    const url = process.env.NEXT_PUBLIC_WEBSITE_URL ? process.env.NEXT_PUBLIC_WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 
 

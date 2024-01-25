@@ -27,7 +27,7 @@ export const useAuth = () => {
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const router = useRouter()
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const url = process.env.WEBSITE_URL ? process.env.WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
+    const url = process.env.NEXT_PUBLIC_WEBSITE_URL ? process.env.NEXT_PUBLIC_WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
 
     const logout = async () => {
         try {
