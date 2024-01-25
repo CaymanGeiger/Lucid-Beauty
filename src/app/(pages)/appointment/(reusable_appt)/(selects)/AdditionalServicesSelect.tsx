@@ -21,6 +21,7 @@ interface AdditionalServiceSelectProps {
 const AdditionalServicesSelect: React.FC<AdditionalServiceSelectProps> = ({ onAdditionalServiceChange, serviceId, serviceType }) => {
     const [services, setServices] = useState<AdditionalService[]>([]);
     const [selectedOption, setSelectedOption] = useState<any[]>([]);
+    const url = process.env.WEBSITE_URL ? process.env.WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 
 
@@ -31,7 +32,7 @@ const AdditionalServicesSelect: React.FC<AdditionalServiceSelectProps> = ({ onAd
         };
 
         const fetchServices = async () => {
-            const response = await fetch('http://localhost:8080/api/additionalservices/');
+            const response = await fetch(`${url}/api/additionalservices`);
             if (response.ok) {
                 const data = await response.json();
                 const formattedServices = data.map((service: AdditionalService) => ({
@@ -57,7 +58,7 @@ const AdditionalServicesSelect: React.FC<AdditionalServiceSelectProps> = ({ onAd
         setSelectedOption(selectedOption);
         const event = {
             target: {
-                name: "additional_services",
+                name: "additionalServices",
                 value: selectedOption || [],
                 price: selectedOption.price
             }

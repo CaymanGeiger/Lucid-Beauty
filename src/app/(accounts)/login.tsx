@@ -25,8 +25,7 @@ const LoginPage: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
     });
     const [isLoginVisible, setIsLoginVisible] = useState(true);
     const triggerToast = useToast()
-
-
+    const url = process.env.WEBSITE_URL ? process.env.WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 
     const handleLogin = async (event: React.FormEvent) => {
@@ -35,7 +34,7 @@ const LoginPage: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
         const email = emailLogin
         const password = passwordLogin
         try {
-            const response = await fetch('/api/login', {
+            const response = await fetch(`${url}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -69,7 +68,7 @@ const LoginPage: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
         }
         if (password === passwordConfirmation) {
             try {
-                const response = await fetch('/api/signup', {
+                const response = await fetch(`${url}/api/signup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

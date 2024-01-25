@@ -33,19 +33,26 @@ const MyAppointments: React.FC = () => {
     const [userFirstName, setUserFirstName] = useState<string>("");
     const [currentAdditionalClicked, setCurrentAdditionalClicked] = useState<AdditonalOpened>({ index: "", opened: false });
     const { openModal } = useModal();
+    console.log(myAppointments)
 
-
+    const url = process.env.WEBSITE_URL ? process.env.WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
 
     const fetchAppointments = async (userId?: string) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/appointments/by-account/${userId}/`);
+            const response = await fetch(`${url}/api/myappointments`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId }),
+            });
             if (response.ok) {
                 const data = await response.json();
-                const updatedData = data.map((appointment: any) => {
-                    const totalPriceAdditional = appointment.additional_services.reduce((acc: any, additional: any) => {
-                        return acc + (additional.price * additional.quantity);
+                const updatedData = data.appointments.map((appointment: any) => {
+                    const totalPriceAdditional = appointment.additionalServices.reduce((acc: any, additional: any) => {
+                        return acc + (additional.price);
                     }, 0);
-                    const totalPrice = totalPriceAdditional + appointment.service.price;
+                    const totalPrice = parseFloat(totalPriceAdditional) + parseFloat(appointment.service.price);
                     return { ...appointment, totalPrice };
                 });
                 setMyAppointments(updatedData);
@@ -58,14 +65,14 @@ const MyAppointments: React.FC = () => {
 
 
     useEffect(() => {
-        const userIdFromCookie = Cookies.get('user_id');
-        const userFirstNameFromCookie = Cookies.get('user_first_name');
+        const userIdFromCookie = Cookies.get('userId');
+        const firstNameFromCookie = Cookies.get('firstName');
         if (userIdFromCookie) {
             fetchAppointments(userIdFromCookie);
             setUserId(userIdFromCookie)
         }
-        if (userFirstNameFromCookie) {
-            setUserFirstName(userFirstNameFromCookie)
+        if (firstNameFromCookie) {
+            setUserFirstName(firstNameFromCookie)
         }
     }, []);
 
@@ -73,6 +80,7 @@ const MyAppointments: React.FC = () => {
     const toggleAdditionalServices = (index: string) => {
         setCurrentAdditionalClicked({ index: index, opened: !currentAdditionalClicked.opened })
     };
+
 
     if (!isLoggedIn) {
         return (
@@ -104,12 +112,12 @@ const MyAppointments: React.FC = () => {
                     </h1>
                 </div>
                 {myAppointments.map((appointment: any, index: string) => {
-                    const totalQuantity = appointment.additional_services.reduce((acc: any, additional: any) => {
+                    const totalQuantity = appointment.additionalServices.reduce((acc: any, additional: any) => {
                         return acc + additional.quantity;
                     }, 0);
                     const noLetterS = totalQuantity === 1 ? "Additional Service" : "Additional Services"
-                    const formattedDate = formatDate(appointment.appointment_date)
-                    const formattedTime = formatTime(appointment.appointment_time)
+                    const formattedDate = formatDate(appointment.appointmentDate)
+                    const formattedTime = formatTime(appointment.appointmentTime)
                     return (
                         <div
                             className={styles.myAppointmentDiv}
@@ -119,7 +127,7 @@ const MyAppointments: React.FC = () => {
                                 <div>
                                     <Image
                                         className={styles.myAppointmentPhoto}
-                                        src={`http://localhost:8080${appointment.service.image}`}
+                                        src={appointment.service.image}
                                         alt='additonal service image'
                                         width={125}
                                         height={125}
@@ -162,7 +170,7 @@ const MyAppointments: React.FC = () => {
                                                                 <th>Price</th>
                                                             </tr>
                                                         </thead>
-                                                        {appointment.additional_services.map((additional: any) => (
+                                                        {appointment.additionalServices.map((additional: any) => (
                                                             <tbody key={additional.id}>
                                                                 <tr className={`${styles.tableText}`}>
                                                                     <td>{additional.name}</td>

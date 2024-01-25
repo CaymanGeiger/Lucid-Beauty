@@ -27,12 +27,11 @@ export const useAuth = () => {
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const router = useRouter()
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-
+    const url = process.env.WEBSITE_URL ? process.env.WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
 
     const logout = async () => {
         try {
-            const response = await fetch('/api/logout', {
+            const response = await fetch(`${url}/api/logout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +53,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const verifyToken = useCallback(() => {
             return new Promise<void>(async (resolve, reject) => {
                 try {
-                    const response = await fetch('/api/verifytoken', {
+                    const response = await fetch(`${url}/api/verifytoken`, {
                         method: 'POST',
                         credentials: 'include',
                         headers: {

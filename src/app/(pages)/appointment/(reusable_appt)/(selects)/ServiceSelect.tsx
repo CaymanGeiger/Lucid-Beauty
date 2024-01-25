@@ -20,13 +20,14 @@ interface OnServiceChangeProps {
 const ServiceSelect: React.FC<OnServiceChangeProps> = ({ onServiceChange, serviceId, serviceType, isMissing }) => {
     const [service, setService] = useState<Service[]>([]);
     const [selectedOption, setSelectedOption] = useState<any>(null);
-
+    const url = process.env.WEBSITE_URL ? process.env.WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 
 
     useEffect(() => {
         const fetchServices = async () => {
-            const response = await fetch('http://localhost:8080/api/services/');
+            const response = await fetch(`${url}/api/services`);
+            console.log(response);
             if (response.ok) {
                 const data = await response.json();
                 const formattedServices = data.map((service: Service) => ({
@@ -44,13 +45,14 @@ const ServiceSelect: React.FC<OnServiceChangeProps> = ({ onServiceChange, servic
             }
         }
         fetchServices();
-    }, [serviceId, serviceType]) 
+    }, [serviceId, serviceType])
 
 
     if (selectedOption) {
 
     }
     const handleChange = (selectedOption: any) => {
+        console.log(selectedOption);
         setSelectedOption(selectedOption);
         const event = {
             target: {

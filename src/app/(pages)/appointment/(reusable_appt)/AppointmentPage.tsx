@@ -35,22 +35,22 @@ type AdditionalService = {
 }
 
 type AppointmentFormType = {
-    appointment_date: string;
-    appointment_time: string;
+    appointmentDate: string;
+    appointmentTime: string;
     service: number;
-    additional_services?: AdditionalService[];
-    guest_first_name?: string;
-    guest_last_name?: string;
-    guest_email?: string;
-    guest_phone_number?: string;
+    additionalServices?: AdditionalService[];
+    guestFirstName?: string;
+    guestLastName?: string;
+    guestEmail?: string;
+    guestPhoneNumber?: string;
 };
 
 type MissingFieldsType = {
     service: boolean
-    guest_first_name: boolean
-    guest_last_name: boolean
-    guest_email: boolean
-    guest_phone_number: boolean
+    guestFirstName: boolean
+    guestLastName: boolean
+    guestEmail: boolean
+    guestPhoneNumber: boolean
 }
 
 function formatDate(dateString: any) {
@@ -69,10 +69,10 @@ const AppointmentPage: React.FC<AppointmentPageProps> = ({ serviceId, serviceTyp
     const [showWelcomeMessage, setShowWelcomeMessage] = useState<boolean>(true);
     const [missingFields, setMissingFields] = useState<MissingFieldsType>({
         service: false,
-        guest_first_name: false,
-        guest_last_name: false,
-        guest_email: false,
-        guest_phone_number: false,
+        guestFirstName: false,
+        guestLastName: false,
+        guestEmail: false,
+        guestPhoneNumber: false,
     });
 
     const [userId, setUserId] = useState<any>(0);
@@ -88,19 +88,21 @@ const AppointmentPage: React.FC<AppointmentPageProps> = ({ serviceId, serviceTyp
     const triggerToast = useToast()
     const router = useRouter();
     const [formData, setFormData] = useState<AppointmentFormType>({
-        appointment_date: "",
-        appointment_time: "",
+        appointmentDate: "",
+        appointmentTime: "",
         service: 0,
-        additional_services: [],
-        guest_first_name: "",
-        guest_last_name: "",
-        guest_email: "",
-        guest_phone_number: "",
+        additionalServices: [],
+        guestFirstName: "",
+        guestLastName: "",
+        guestEmail: "",
+        guestPhoneNumber: "",
     });
+    const url = process.env.WEBSITE_URL ? process.env.WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
+
 
 
     useEffect(() => {
-        const userId = Cookies.get('user_id');
+        const userId = Cookies.get('userId');
         setUserId(userId)
 
     }, []);
@@ -108,14 +110,14 @@ const AppointmentPage: React.FC<AppointmentPageProps> = ({ serviceId, serviceTyp
     // FORM CHANGES
     const handleFormChange = (e: any) => {
         const value = e.target.value;
-        const inputName = e.target.name;
+        let inputName = e.target.name;
 
-        if (inputName === "additional_services" && value && value.value === 0)  {
+        if (inputName === "additionalServices" && value && value.value === 0)  {
             return;0
         }
 
         setFormData(prevFormData => {
-            if (inputName === "additional_services") {
+            if (inputName === "additionalServices") {
                 const serviceIds = value.map((service: any) => service.value.id);
                 // let totalAdditionalPrice = value.reduce((total: number, service: any) => {
                 //     return total + parseFloat(service.value.price);
@@ -136,7 +138,9 @@ const AppointmentPage: React.FC<AppointmentPageProps> = ({ serviceId, serviceTyp
         });
     }
 
+
     const handleSubmit = async () => {
+
         if (formData.service === 0) {
             setMissingFields({ ...missingFields, ['service']: true })
             triggerToast(`Missing Selected Service!`, "error")
@@ -147,21 +151,21 @@ const AppointmentPage: React.FC<AppointmentPageProps> = ({ serviceId, serviceTyp
         if (isLoggedIn) {
             updatedFormData = {
                 service: formData.service,
-                additional_services: formData.additional_services,
-                appointment_date: selectedDateTime ? selectedDateTime.format("YYYY-MM-DD") : "",
-                appointment_time: selectedDateTime ? selectedDateTime.format("HH:mm:ss") : "",
-                account: parseInt(userId)
+                additionalServices: formData.additionalServices,
+                appointmentDate: selectedDateTime,
+                appointmentTime: selectedDateTime,
+                accountId: parseInt(userId)
             };
 
         } else {
             updatedFormData = {
                 ...formData,
-                appointment_date: selectedDateTime ? selectedDateTime.format("YYYY-MM-DD") : "",
-                appointment_time: selectedDateTime ? selectedDateTime.format("HH:mm:ss") : ""
+                appointmentDate: selectedDateTime,
+                appointmentTime: selectedDateTime
             };
         }
 
-        const appointmentUrl = "http://localhost:8080/api/appointments/";
+        const appointmentUrl = `${url}/api/appointment/create`;
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(updatedFormData),
@@ -173,18 +177,18 @@ const AppointmentPage: React.FC<AppointmentPageProps> = ({ serviceId, serviceTyp
         const response = await fetch(appointmentUrl, fetchConfig);
         if (response.ok) {
             closeDatePickerModal()
-            const formattedDate = formatDate(updatedFormData.appointment_date)
-            const formattedTime = formatTime(updatedFormData.appointment_time)
+            const formattedDate = formatDate(updatedFormData.appointmentDate)
+            const formattedTime = formatTime(updatedFormData.appointmentTime)
             triggerToast(`Appointment Made For ${formattedDate} at, ${formattedTime}!`, "success")
             setFormData({
-                appointment_date: "",
-                appointment_time: "",
+                appointmentDate: "",
+                appointmentTime: "",
                 service: 0,
-                additional_services: [],
-                guest_first_name: "",
-                guest_last_name: "",
-                guest_email: "",
-                guest_phone_number: "",
+                additionalServices: [],
+                guestFirstName: "",
+                guestLastName: "",
+                guestEmail: "",
+                guestPhoneNumber: "",
             });
             if (isLoggedIn) {
                 router.push('/myappointments')
@@ -205,7 +209,7 @@ const AppointmentPage: React.FC<AppointmentPageProps> = ({ serviceId, serviceTyp
     };
 
     const handleServiceChange = (e: any) => {
-        const selectedOption = e.target.value;
+        const selectedOption = e.target.value
         setSelectedService(selectedOption);
         handleFormChange(e);
     };
@@ -320,47 +324,47 @@ const AppointmentPage: React.FC<AppointmentPageProps> = ({ serviceId, serviceTyp
                                 {userChoice === 'guest' && (
                                     <div className={styles.inputDivParent}>
                                         <div className={styles.inputDiv}>
-                                            <label className={styles.labels} htmlFor="guest_first_name">First Name</label>
+                                            <label className={styles.labels} htmlFor="guestFirstName">First Name</label>
                                             <input
-                                                value={formData.guest_first_name}
+                                                value={formData.guestFirstName}
                                                 onChange={handleFormChange}
                                                 className={styles.input}
                                                 type="text"
-                                                name="guest_first_name"
-                                                id="guest_first_name"
+                                                name="guestFirstName"
+                                                id="guestFirstName"
                                             />
                                         </div>
                                         <div className={styles.inputDiv}>
-                                            <label className={styles.labels} htmlFor="guest_last_name">Last Name</label>
+                                            <label className={styles.labels} htmlFor="guestLastName">Last Name</label>
                                             <input
-                                                value={formData.guest_last_name}
+                                                value={formData.guestLastName}
                                                 onChange={handleFormChange}
                                                 className={styles.input}
                                                 type="text"
-                                                name="guest_last_name"
-                                                id="guest_last_name"
+                                                name="guestLastName"
+                                                id="guestLastName"
                                             />
                                         </div>
                                         <div className={styles.inputDiv}>
-                                            <label className={styles.labels} htmlFor="guest_email">Email</label>
+                                            <label className={styles.labels} htmlFor="guestEmail">Email</label>
                                             <input
-                                                value={formData.guest_email}
+                                                value={formData.guestEmail}
                                                 onChange={handleFormChange}
                                                 className={styles.input}
                                                 type="email"
-                                                name="guest_email"
-                                                id="guest_email"
+                                                name="guestEmail"
+                                                id="guestEmail"
                                             />
                                         </div>
                                         <div className={styles.inputDiv}>
-                                            <label className={styles.labels} htmlFor="guest_phone_number">Phone Number</label>
+                                            <label className={styles.labels} htmlFor="guestPhoneNumber">Phone Number</label>
                                             <input
-                                                value={formData.guest_phone_number}
+                                                value={formData.guestPhoneNumber}
                                                 onChange={handleFormChange}
                                                 className={styles.input}
                                                 type="text"
-                                                name="guest_phone_number"
-                                                id="guest_phone_number"
+                                                name="guestPhoneNumber"
+                                                id="guestPhoneNumber"
                                             />
                                         </div>
                                     </div>
@@ -426,7 +430,7 @@ const AppointmentPage: React.FC<AppointmentPageProps> = ({ serviceId, serviceTyp
                             </Link>
                             <Link
                                 className={styles.formLink}
-                                href="./additional_services"
+                                href="./additionalservices"
                             >
                                 Additional Services
                             </Link>

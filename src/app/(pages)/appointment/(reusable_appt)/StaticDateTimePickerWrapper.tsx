@@ -11,24 +11,24 @@
   const StaticDateTimePickerWrapper = (props: any) => {
     const [selectedDate, setSelectedDate] = useState(dayjs());
     const [bookedAppointments, setBookedAppointments] = useState<any>({});
-    console.log(bookedAppointments)
+    // console.log(bookedAppointments)
 
 
-    const fetchAppointments = async () => {
-      const res = await fetch('http://localhost:8080/api/appointments/');
-      if (!res.ok) {
-        throw new Error('Failed to fetch services');
-      }
-      const data = await res.json();
-      const formattedData = data.map((appointment:any) => ({
-        date: appointment.appointment_date,
-        time: appointment.appointment_time
-      }));
-      setBookedAppointments(formattedData);
-    }
-      useEffect(() => {
-        fetchAppointments()
-      } ,[])
+    // const fetchAppointments = async () => {
+    //   const res = await fetch('http://localhost:8080/api/appointments/');
+    //   if (!res.ok) {
+    //     throw new Error('Failed to fetch services');
+    //   }
+    //   const data = await res.json();
+    //   const formattedData = data.map((appointment:any) => ({
+    //     date: appointment.appointment_date,
+    //     time: appointment.appointment_time
+    //   }));
+    //   setBookedAppointments(formattedData);
+    // }
+    //   useEffect(() => {
+    //     fetchAppointments()
+    //   } ,[])
 
 
 
@@ -37,35 +37,35 @@
       setSelectedDate(newValue);
     };
 
-    const shouldDisableDate = (date:any) => {
-      return bookedAppointments.some((appointment:any) => {
-        const appointmentDate = dayjs(appointment.date);
-        return date.isSame(appointmentDate, 'day');
-      });
-    };
+    // const shouldDisableDate = (date:any) => {
+    //   return bookedAppointments.some((appointment:any) => {
+    //     const appointmentDate = dayjs(appointment.date);
+    //     return date.isSame(appointmentDate, 'day');
+    //   });
+    // };
 
 
-    const shouldDisableTime = (time: any, clockType:any) => {
-      if (clockType === 'hours') {
-        // Define working hours in 24-hour format
-        const startHour = 8; // 8 AM
-        const endHour = 18; // 6 PM
+    // const shouldDisableTime = (time: any, clockType:any) => {
+    //   if (clockType === 'hours') {
+    //     // Define working hours in 24-hour format
+    //     const startHour = 8; // 8 AM
+    //     const endHour = 18; // 6 PM
 
-        // Assuming 'time' is provided as a number representing the hour
-        // Check if time is outside working hours
-        const isOutsideWorkingHours = time < startHour || time >= endHour;
+    //     // Assuming 'time' is provided as a number representing the hour
+    //     // Check if time is outside working hours
+    //     const isOutsideWorkingHours = time < startHour || time >= endHour;
 
-        return isOutsideWorkingHours;
-      }
-      return false;
-    };
+    //     return isOutsideWorkingHours;
+    //   }
+    //   return false;
+    // };
 
 
     return (
         <StaticDateTimePicker
           value={selectedDate}
           onChange={handleDateChange}
-          shouldDisableDate={shouldDisableDate}
+          // shouldDisableDate={shouldDisableDate}
           // shouldDisableTime={shouldDisableTime}
           minTime={dayjs().set('hour', 8)}
           maxTime={dayjs().set('hour', 17)}

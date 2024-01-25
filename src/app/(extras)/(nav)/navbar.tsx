@@ -41,6 +41,8 @@ export default function Navbar() {
     const closeMenu = () => {
         setMenuDisplay(0);
         setMenuDisplayIndex(-1);
+        setMenuDisplayVisability("hidden")
+        setNavOpened(false);
     };
 
     const toggleMenu = () => {
@@ -123,10 +125,10 @@ export default function Navbar() {
                     <Link href="/services" onClick={closeMenu} className={styles.link}>Services</Link>
                 </li>
                 <li className={styles.li}>
-                    <Link href="/additional_services" onClick={closeMenu} className={styles.link}>Additional Services </Link>
+                    <Link href="/additionalservices" onClick={closeMenu} className={styles.link}>Additional Services </Link>
                 </li>
                 <li className={styles.li}>
-                    <Link href="/appointment" onClick={() => { handleButtonClick(), closeMenu() }} className={styles.link}>Make Appointment</Link>
+                    <Link href="/appointment" onClick={closeMenu} className={styles.link}>Make Appointment</Link>
                 </li>
                 <li className={styles.li}>
                     <Link href="/myappointments" onClick={closeMenu} className={styles.link}>My Appointments</Link>
