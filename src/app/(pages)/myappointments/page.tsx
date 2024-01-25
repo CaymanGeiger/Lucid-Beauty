@@ -35,7 +35,7 @@ const MyAppointments: React.FC = () => {
     const { openModal } = useModal();
     console.log(myAppointments)
 
-    const url = process.env.NEXT_PUBLIC_WEBSITE_URL ? process.env.NEXT_PUBLIC_WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
+    const url = process.env.NEXT_PUBLIC_WEBSITE_URL ? process.env.NEXT_PUBLIC_WEBSITE_URL : "https://lucid-beauty.vercel.app";
 
     const fetchAppointments = async (userId?: string) => {
         try {

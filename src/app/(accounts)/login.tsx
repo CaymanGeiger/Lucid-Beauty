@@ -25,7 +25,7 @@ const LoginPage: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
     });
     const [isLoginVisible, setIsLoginVisible] = useState(true);
     const triggerToast = useToast()
-    const url = process.env.NEXT_PUBLIC_WEBSITE_URL ? process.env.NEXT_PUBLIC_WEBSITE_URL : process.env.NEXT_PUBLIC_WEBSITE_URL;
+    const url = process.env.NEXT_PUBLIC_WEBSITE_URL ? process.env.NEXT_PUBLIC_WEBSITE_URL : "https://lucid-beauty.vercel.app";
 
 
     const handleLogin = async (event: React.FormEvent) => {
