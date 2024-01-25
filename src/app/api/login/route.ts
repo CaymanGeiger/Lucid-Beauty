@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
         const accessToken = jwt.sign(
             { userEmail: email },
             ACCESS_TOKEN_SECRET,
-            { expiresIn: '15m' }
+            { expiresIn: '60m' }
         );
 
         const refreshToken = jwt.sign(

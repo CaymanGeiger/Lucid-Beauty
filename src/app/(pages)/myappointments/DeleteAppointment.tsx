@@ -164,7 +164,6 @@ const DeleteMessage: React.FC<DeleteMessageProps> = ({ appointmentId, fetchAppoi
                     </button>
                 </AlertDialog.Trigger>
                 <AlertDialog.Portal>
-                    <AlertDialog.Overlay className="AlertDialogOverlay" />
                     <AlertDialog.Content className="AlertDialogContent">
                         <AlertDialog.Title className="AlertDialogTitle">Are you absolutely sure?</AlertDialog.Title>
                         <AlertDialog.Description className="AlertDialogDescription">

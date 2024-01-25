@@ -1,11 +1,12 @@
 
 .main {
     width: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 30px;
-    padding: 30px 0;
+    padding: 40px 0;
     background-color: var(--background-darkmode-purple);
 }
 .mainChild {
@@ -17,7 +18,7 @@
     border-radius: 5px;
     background-color: var(--background-darkmode);
     height: fit-content;
-    width: 95%;
+    width: 100%;
 }
 .mainChildHeader {
     display: flex;
@@ -72,13 +73,14 @@
     position: relative;
     width: 100%;
     height: 100%;
+    min-height: 125px;
     padding: 5px;
 
 }
 
 .myAppointmentDivChildOneHeader {
     white-space: nowrap;
-    font-size: clamp(19px, calc(10px + (40 - 20) * ((100vw - 300px) / (1700))), 25px);
+    font-size: clamp(17px, calc(10px + (40 - 20) * ((100vw - 300px) / (1700))), 25px);
     color: var(--text-color-darkmode);
 }
 

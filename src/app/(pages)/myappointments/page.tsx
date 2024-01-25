@@ -112,9 +112,7 @@ const MyAppointments: React.FC = () => {
                     </h1>
                 </div>
                 {myAppointments.map((appointment: any, index: string) => {
-                    const totalQuantity = appointment.additionalServices.reduce((acc: any, additional: any) => {
-                        return acc + additional.quantity;
-                    }, 0);
+                    const totalQuantity = appointment.additionalServices.length
                     const noLetterS = totalQuantity === 1 ? "Additional Service" : "Additional Services"
                     const formattedDate = formatDate(appointment.appointmentDate)
                     const formattedTime = formatTime(appointment.appointmentTime)
